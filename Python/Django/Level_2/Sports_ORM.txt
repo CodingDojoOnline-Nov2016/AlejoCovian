@@ -1,0 +1,18 @@
+QUERIES:
+
+1. "leagues": League.objects.filter(sports="Baseball"),
+2. "leagues": League.objects.filter(name__contains="Womens'"),
+3. "leagues": League.objects.filter(sport__contains="Hockey"),
+4. "leagues": League.objects.exclude(sport="football"),
+5. "leagues": League.objects.filter(name__contains="Conference"),
+6. "leagues": League.objects.filter(name__contains="Atlantic"),
+7. "teams": Team.objects.filter(location="Dallas"),
+8. "teams": Team.objects.filter(team_name__contains="Raptors"),
+9. "teams": Team.objects.filter(location__contains="City"),
+10. "teams": Team.objects.filter(team_name__startswith="T"),
+11. "teams": Team.objects.order_by('location'),
+12. "teams": Team.objects.order_by('-location'),
+13. "players": Player.objects.filter(last_name="Cooper"),
+14. "players": Player.objects.filter(first_name="Joshua"),
+15. "players": Player.objects.filter(last_name="Cooper").exclude(first_name="Joshua"),
+16. "players": Player.objects.filter(first_name="Alexander")|Player.objects.filter(first_name="Wyatt"),
