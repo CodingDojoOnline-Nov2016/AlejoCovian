@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>RESULT</title>
+</head>
+<body>
+	<p>RESULT</p>
+	<p>Thanks for submitting this form! You have submitted this form {{request.session.count}} times now.</p>
+	<p>Submitted information:</p>
+	Name: {{request.session.name}}
+	<br>
+	Location: {{request.session.location}}
+	<br>
+	Language: {{request.session.language}}
+	<br>
+	<form action = '/goback' method = 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'Go Back'>
+	</form>
+</body>
+</html>

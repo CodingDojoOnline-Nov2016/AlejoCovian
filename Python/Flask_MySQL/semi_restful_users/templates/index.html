@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Users Index</title>
+	<style type="text/css">
+		th{
+			background-color: 003399;
+			color: white;
+			padding: 5px;
+			font-family: verdana;
+			font-weight: lighter;
+		}
+		td{
+			background-color: #d7e4eb;
+			padding: 5px;
+			padding-left: 10px;
+			padding-right: 10px;
+			text-align: center;
+
+		}
+		table{
+			border-style: outset;
+			border-color: #65799b;
+		}
+		a{
+			color:003399;
+		}
+	</style>
+</head>
+<body>
+	<h1>Users</h1>
+	<table>
+		<thead>
+		<th>ID</th>
+		<th>Full Name</th>
+		<th>Email</th>
+		<th>Created At</th>
+		<th>Actions</th>
+		</thead>
+		{% for user in users: %}
+			<td>{{user['id']}}</td>
+			<td>{{user['first_name']}} {{user['last_name']}}</td>
+			<td>{{user['email']}}</td>
+			<td>{{user['created_at']}}</td>
+	
+			<td>
+				<a href="/show{{user['id']}}">show</a>
+				<a href="/edit">edit</a>
+				<a href="/delete">delete</a>
+			</td>
+
+		{% endfor %}
+	</table>
+</body>
+</html>

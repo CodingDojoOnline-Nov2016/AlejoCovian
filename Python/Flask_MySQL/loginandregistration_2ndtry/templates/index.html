@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title>Login Page</title>
+	<style type="text/css">
+		p {
+			font-size: 15px;
+		}
+		#header{
+			padding-bottom: 10px;
+			padding-top: 5px;
+			padding-left: 15px;
+		}
+		h1{
+			display: inline-block;
+			margin-left: 40px;
+		}
+		#login{
+			display: inline-block;
+			float: right;
+			margin:30px;
+		}
+		body{
+			display: inline-block;
+			width: 98%		}
+
+		#register{
+			display: inline-block;
+			margin-left: 20px;
+			text-align: right;
+		}
+
+		#leftbody{
+			display: inline-block;
+			width: 600px;
+			vertical-align: top;
+			padding: 20px;
+			margin-left:40px;
+		}
+
+		#rightbody{
+			display: inline-block;
+			padding-left: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-right: 20px;
+			float: right;
+			width: 400px;
+		}
+
+		#flashes{
+			display: inline-block;
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+		<div id = "header">
+			<h1>Welcome</h1>
+			<div id = 'login' >
+			<form action = "/login" method='post'>
+				Email <input type = 'text' name = "email">
+				Password <input type = 'password' name = 'password'>
+				<input type = 'submit' value = 'Log In'>
+			</form>
+		</div>
+		</div>
+	<hr>
+
+	<div id = "leftbody">
+		<p>Welcome to the Log-In page. Here is where you can log in if you already have an account. Otherwise, feel free to create one in order to register.</p>
+	</div>
+
+	<div id = "rightbody">
+	<h2>Register</h2>
+	<p>Create a new account by filling out the form below:</p>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p ide = "flashes">{{ message }}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<form id="register" action = '/register' method = 'post'>
+		<p>First Name:<input type = 'text' name = 'first_name'></p>
+
+		<p>Last Name:<input type = 'text' name = 'last_name'></p>
+
+		<p>Email:<input type = 'text' name = 'email'></p>
+
+		<p>Password:<input type = 'password' name = 'password'></p>
+
+		<p>Confirm Password: <input type = 'password' name = 'confirm_password'></p>
+		<br>
+		<input type = 'submit' value = 'Create New Account'>
+	</form>
+	</div>
+</body>
+</html>

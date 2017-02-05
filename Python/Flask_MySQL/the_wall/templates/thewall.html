@@ -1,0 +1,170 @@
+<html>
+<head>
+	<title>The Wall</title>
+	<style type="text/css">
+		body{
+			background-color: gray;
+			padding-left: 2px;
+			padding-right: 2px;
+		}
+		#message{
+			padding: 10px;
+			background-color: #cce6ff;
+			font-size: 20px;
+		}
+		.comment{
+			display: inline-block;
+			padding-left: 30px;
+			margin-left: 20px;
+			margin-bottom: 10px;
+			background-color: #e6f3ff;
+			width: 450px;
+		}
+		#header{
+			background-color: #334477;
+			color: white;
+		}
+		h1{
+			display: inline-block;
+			padding-left: 20px;
+			padding-right: 10px;
+		}
+		#welcome{
+			display: inline-block;
+			float: right;
+			padding-right: 70px;
+			padding-top: 8px;
+			font-size: 20px;
+		}
+
+		#wrapperleft{
+			display: inline-block;
+			background-color: white;
+			width: 500px;
+			padding: 20px;
+			padding-left: 30px;
+		}
+
+		#wrapperright{
+			display: inline-block;
+			background-color: white;
+			padding: 10px;
+			float: right;
+
+		}
+		#user{
+			display: inline-block;
+			float: right;
+			width: 400px;
+			padding: 40px;
+		}
+		h3{
+			display: inline-block;
+		}
+
+		#emailandlogout{
+			display: inline-block;
+			width: 100px;
+			float: right;
+			margin-right: 40px;
+			background-color: #ff9933;
+			color: white; 
+			padding: 20px;
+			border-style: solid;
+			border-color: black;
+
+		}
+
+		#logout{
+			display: inline;
+			background-color: #334477;
+			color: white;
+			border: none;
+			padding: 10px;
+		}
+		#messageinput{
+			width: 400px;
+			height: 40px;
+			font-size: 20px;
+
+		}
+		#commentinput{
+			width: 400px;
+			margin-left: 20px;
+			height: 30px;
+			font-size: 15px;
+		}
+
+		#postmessage{
+			background-color: #ff9933;
+			color: white;
+			padding: 10px;
+			border-style: solid;
+			border-color: black;
+		}
+		#commentsubmit{
+			background-color: #ff9933;
+			color: white;
+			padding: 5px;
+			border-style: solid;
+			border-color:black;
+		}
+		#commentdate{
+			font-size: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id = 'header'>
+		<h1>The Wall</h1>
+		<p id = 'welcome'>Welcome to The Wall, {{data['first_name']}}!</p>
+	</div>
+	<hr>
+<div id = 'wrapperright'>
+		<div id = 'emailandlogout'>
+			<form action='/logout' method='post'>
+				<input type = 'submit' value = 'Log Out?' id = 'logout'>
+			</form>
+			<p style='font-weight:bold'>Your Friends:</p>
+			{% for user in users: %}
+				{% if user['first_name'] != data['first_name']: %}
+				<p>{{user['first_name']}}</p>
+				{% endif %}
+			{% endfor %}
+		</div>
+	<div id = 'user'>
+		<h3>{{data['first_name']}} {{data['last_name']}}</h3>
+		<br>
+	<h3>Write a message:</h3>
+	<form action = '/message' method='post'>
+		<input type = 'textarea' name = 'message' id = 'messageinput'>
+		<br>
+		<input type = 'submit' value = 'Post Message' id = 'postmessage'>
+	</form>
+	</div>
+</div>
+
+<div id = 'wrapperleft'>
+	{% for message in messages: %}
+		<h4>{{message['first_name']}} {{message['last_name']}}</h4>
+		<p>{{message['created_at']}}</p>
+		<p id = 'message'>{{message['message']}}</p>
+		<div class='comment'>
+		{% for comment in comments: %}
+			{% if comment.message_id == message.id: %}
+			<hr>
+			<p style = "font-size: 14px;">{{comment['first_name']}} {{comment['last_name']}}</p>
+			<p id = 'commentdate'>{{comment['created_at']}}</p>
+			<p>{{comment['comment']}}</p>
+			{% endif %}
+		{% endfor %}
+		</div>
+		<form action = "/comment/{{message['id']}}>" method = 'post'>
+			<input type = 'text' name = 'comment' id = 'commentinput'>
+			<input type = 'submit' value = 'Comment' id = 'commentsubmit'>
+		</form>
+
+	{% endfor %}
+</div>
+</body>
+</html>

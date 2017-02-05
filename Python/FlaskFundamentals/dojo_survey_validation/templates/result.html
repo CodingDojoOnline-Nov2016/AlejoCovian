@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+	<meta charset="UTF-8">
+	<title>This is a Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+	<div>
+		<a>NAME:</a><br>{{data['name']}}
+	</div>
+
+	<div>
+		<a>LOCATION:</a><br>{{data['location']}}
+	</div>
+
+	<div>
+		<a>LANGUAGE:</a><br>{{data['language']}}
+	</div>
+
+	<div>
+		<a>DESCRIPTION:</a><br>{{data['description']}}
+	</div>
+	<form action = '/'>
+		<button>Return</button>
+	</form>
+</body>
+
+</html>

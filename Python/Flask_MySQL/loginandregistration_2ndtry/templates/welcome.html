@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Welcome</title>
+	<style type="text/css">
+		body {
+			width: 90%;
+			margin: 10px;
+			padding: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Welcome</h1>
+	<p>Welcome to the page, {{session['id']}}.</p>
+	<h3>{{session['id']}}</h3>
+	<form action = '/logout'>
+		<input type = 'submit' value = 'Log Out'>
+	</form>
+</body>
+</html>

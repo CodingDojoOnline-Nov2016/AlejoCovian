@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Log In Or Register</title>
+</head>
+<body>
+	<h1>Log In</h1>
+	<p>Welcome to the Login and Registration Page. If you already have an account, go ahead and log in.</p>
+	<form action = '/login' method = 'post'>
+		Email: <input type = 'text' name = 'email'>
+		Password: <input type = 'password' name = 'password'>
+		<input type = 'submit' value = 'Log In'>
+	</form>
+	<hr>
+	<h2>Create New Account</h2>
+	<p>Don't have an account? Create a new one below.</p>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+			<p>{{message}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<form action = '/register' method = 'post'>
+		First Name: <input type = 'text' name = 'first_name'>
+		<br>
+		Last Name: <input type = 'text' name = 'last_name'>
+		<br>
+		Email: <input type = 'text' name = 'email'>
+		<br>
+		Password: <input type = 'password' name = 'password'>
+		<br>
+		Confirm Password: <input type = 'password' name = 'confirm_password'>
+		<br>
+		<input type = 'submit' value = 'Create Account'>
+	</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>INDEX</title>
+</head>
+<body>
+	<h1>Index</h1>
+	<p>GOLD: {{request.session.gold}}</p>
+	<br>
+	FARM: (earn 10-20)
+	<form action = '/process_money' method = 'post'>
+		{% csrf_token %}
+		<input type = 'hidden' name = 'building' value = 'farm'>
+		<input type = 'submit' value = 'FIND GOLD'>
+	</form>
+
+	CAVE: (earns 5-10)
+	<form action = '/process_money' method = 'post'>
+		{% csrf_token %}
+		<input type = 'hidden' name = 'building' value = 'cave'>
+		<input type = 'submit' value = 'FIND GOLD'>
+	</form>
+
+	HOUSE: (earns 2-5)
+	<form action = '/process_money' method = 'post'>
+		{% csrf_token %}
+		<input type = 'hidden' name = 'building' value = 'house'>
+		<input type = 'submit' value = 'FIND GOLD'>
+	</form>
+
+	CASINO: (earns/takes 0-50)
+	<form action = '/process_money' method = 'post'>
+		{% csrf_token %}
+		<input type = 'hidden' name = 'building' value = 'casino'>
+		<input type = 'submit' value = 'FIND GOLD'>
+	</form>
+
+	<div id = 'activities'>
+		Earned {{request.session.activities}} golds.
+	</div>
+</body>
+</html>

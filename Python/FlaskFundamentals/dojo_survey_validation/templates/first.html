@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+	<meta charset="UTF-8">
+	<title>This is a Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+	<form action="/create" method="post">
+
+		<div>
+			<input type = 'text' placeholder = 'name' name = 'name'>
+		</div>
+
+		<div>
+			<select name="location">
+				<option value="Los Angeles">Los Angeles</option>
+				<option value="San Francisco">San Francisco</option>
+				<option value="Sacramento">Sacramento</option>
+				<option value="San Diego">San Diego</option>
+			</select>
+		</div>
+
+		<div>
+			<select name="language">
+				<option value="JavaScript">JavaScript</option>
+				<option value="Python">Python</option>
+				<option value="Ruby">Ruby</option>
+				<option value="PHP">PHP</option>
+			</select>
+		</div>
+
+		<div>
+			<label>Description</label>
+			<br>
+			<textarea name = 'description'></textarea>
+		</div>
+
+		<div>
+			<input type = 'submit' value = 'submit'>
+		</div>
+
+	</form>
+</body>
+</html>

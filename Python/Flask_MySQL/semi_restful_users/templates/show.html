@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>User {{users['id']}}</title>
+	<style type="text/css">
+		.info{
+			font-size: 20px;
+			margin-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	{% for user in users %}
+	<h1>User {{user['id']}}</h1>
+	<div class = 'wrap'>
+		<p>Full Name:</p>
+		<p class = 'info'>{{user['first_name']}} {{user['last_name']}}</p>
+	</div>
+	<div class = 'wrap'>
+		<p>Email:</p>
+		<p class = 'info'>{{user['email']}}</p>
+	</div>
+	<div class = 'wrap'>
+		<p>Created At:</p>
+		<p class = 'info'>{{user['created_at']}}</p>
+	</div>
+	{% endfor %}
+	<a href="/">Go Back</a>
+	<a href="/edit{{users['id']}}">Edit</a>
+</body>
+</html>

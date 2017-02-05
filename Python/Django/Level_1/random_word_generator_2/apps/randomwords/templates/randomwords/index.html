@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title>INDEX</title>
+</head>
+<body>
+	<p>This is index.html for random_words_generator_2.</p>
+	{% csrf_token %}
+	<form action = '/generate'>
+		Attempt # {{request.session.attempt}}
+		<br>
+		{{request.session.word}}
+		<br>
+		<input type = 'submit' value = 'generate'>
+	</form>
+</body>
+</html>

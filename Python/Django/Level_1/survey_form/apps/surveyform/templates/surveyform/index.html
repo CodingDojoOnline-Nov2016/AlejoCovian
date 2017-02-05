@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>SURVEY FORM</title>
+</head>
+<body>
+	<form action = '/process' method = 'post'>
+		{% csrf_token %}
+		Your Name:<input type = 'text' name = 'name'>
+		<br>
+		Dojo Location:<input type ='text' name = 'location'>
+		<br>
+		Favourite Language:<input type = 'text' name = 'language'>
+		<br>
+		<input type = 'submit' value = 'Submit'>
+	</form>
+</body>
+</html>

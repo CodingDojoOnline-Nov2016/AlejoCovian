@@ -1,0 +1,13 @@
+#statement{
+	width: 300px;
+	border-style:solid;
+	border-color:blue;
+	text-align: center;
+}
+p{
+	border-style: solid;
+	border-color: black;
+	font-size: 20px;
+	width: 300px;
+	text-align: center;
+}

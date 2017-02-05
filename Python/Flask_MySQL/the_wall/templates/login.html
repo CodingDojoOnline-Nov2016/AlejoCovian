@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title>The Wall - Log In</title>
+	<style type="text/css">
+		#header{
+			background-color: #334477;
+			color: white;
+		}
+		h1{
+			display: inline-block;
+			padding-left: 20px;
+			padding-right: 10px;
+		}
+		#login{
+			display: inline-block;
+			float: right;
+			padding-top: 20px;
+			padding-right: 10px;
+		}
+		#description{
+			display: inline-block;
+			margin-left: 30px;
+			background-color: #ff9933;
+			color: white;
+			padding: 30px;
+			padding-bottom: 100px;
+			padding-right: 450px;
+		}
+		li{
+			margin:20px;
+			font-weight: bold;
+		}
+		#registry{
+			display: inline;
+			margin-right: 100px;
+			width: 300px;
+			text-align: right;
+			float: right;
+		}
+		input{
+			margin: 5px;
+		}
+		#submitregister{
+			background-color:#334477;
+			color: white;
+			margin-right: 20px;
+			padding: 10px;
+		}
+		h3{
+			margin-right: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id = "header">
+	<h1>The Wall</h1>
+
+		<div id = "login">
+			<form action = "login" method = "post">
+				Email:<input type = 'text' name = 'email'>
+				Password:<input type = 'password' name = 'password'>
+				<input type = 'submit' value = 'Log In'>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<div id = 'description'>
+		<h3>Share posts with your friends. </h3>
+		<ol>
+			<li>Create an account and log in</li>
+			<li>Post a message on The Wall</li>
+			<li>Comment on your friends' messages</li>
+		</ol>
+	</div>
+	<div id = 'registry'>
+		<h3>REGISTER</h3>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<p>{{message}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<form action = '/register' method = 'post'>
+		First Name:<input type = 'text' name = 'first_name'>
+		<br>
+		Last Name:<input type = 'text' name = 'last_name'>
+		<br>
+		Email:<input type = 'text' name = 'email'>
+		<br>
+		Password:<input type = 'password' name = 'password'>
+		<br>
+		Confirm Password<input type = 'password' name = 'confirm_password'>
+		<input type = 'submit' value = 'Create Account' id = 'submitregister'>
+		</form>
+	</div>
+</body>
+</html>

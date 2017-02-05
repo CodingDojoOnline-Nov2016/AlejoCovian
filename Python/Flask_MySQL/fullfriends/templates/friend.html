@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Friend</title>
+</head>
+<body>
+	<h1>Friend ID</h1>
+		<p>ID # {{friend['id']}}</p>
+		<p>First Name: <br>{{friend['first_name']}}</p>
+		<p>Last Name: <br>{{friend['last_name']}}</p>
+		<p>Occupation: <br>{{friend['occupation']}}</p>
+
+		<form>
+			<input type = 'submit' value =  "Edit Friend">
+		</form>
+
+		<form action="/friends/{{friend['id']}}/delete" method='POST'>
+			<input type = 'submit' value= "Delete This Friend?">
+		</form>
+		
+
+		<br>
+		<br>
+		<a href="/goback">Go back</a>
+
+
+</body>
+</html>

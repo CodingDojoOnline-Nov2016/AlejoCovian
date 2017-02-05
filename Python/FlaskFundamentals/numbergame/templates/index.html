@@ -1,0 +1,18 @@
+<html lang = "en">
+	<head>
+		<title>Number Game</title>
+	</head>
+
+	<body>
+		<h1>Number Game</h1>
+		<p>This is the great number game.</p>
+		Guess a number between one and one-hundred:
+		<form action = "/guessing" method = "post">
+			<input type = "text" name = "guess">
+			<input type = "submit" value = "submit">
+		</form>
+		<p> You guessed:{{ session['guess']}}</p>
+		<p>{{ session['output'] }}</p>
+		<a href="/reset">Play Again</a>
+	</body>
+</html>

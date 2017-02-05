@@ -1,0 +1,16 @@
+<html lang = 'en'>
+<head>
+	<meta charset = 'UTF-8'>
+	<title>INDEX</title>
+</head>
+<body>
+	<h1>Random Words</h1>
+	<p>Random words to be generated here:</p>
+	<p>attempt #{{ request.session.attempt }}</p>
+	{{ request.session.word }}
+	<form action = '/create' method = 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'create'>
+	</form>
+</body>
+</html>

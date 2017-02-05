@@ -1,0 +1,18 @@
+<html lang = "en">
+<head>
+	<title>Counter</title>
+</head>
+<body>
+	<h1>Counter</h1>
+	<p>Count:</p>
+	{{session['count']}}
+	<p>Click button to add value of 2 to number:</p>
+	<form action = '/add2'>
+		<button type='submit'>Add 2</button>
+	</form>
+	<p>Click the button to go back to the original value and cancel the count:</p>
+	<form action = '/goback'>
+		<button type = 'submit'>Go Back</button>
+	</form>
+</body>
+</html>
