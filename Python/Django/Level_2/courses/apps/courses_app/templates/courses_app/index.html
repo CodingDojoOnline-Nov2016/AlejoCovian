@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Add a Student</title>
+</head>
+<body>
+	<h1>Welcome</h1>
+	<h2>Add a New Course</h2>
+	<form action = '/courses' method='post'>
+		{% csrf_token %}
+		Name:<input type = 'text' name = 'name'>
+		<br>
+		<br>
+		Value:<textarea name = 'description' rows='8' cols='40'></textarea>
+		<br>
+		<input type = 'submit' value = 'Add'>
+	</form>
+
+	{% for course in courses %}
+	<br>
+		<p>{{course.name}}</p>
+		{{course.description}}
+		<a href="/course/{{course.id}}">remove</a>
+	</br>
+	{% endfor %}
+</body>
+</html>
