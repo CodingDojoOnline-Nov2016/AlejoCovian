@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Success</title>
+</head>
+<body>
+	<h2>SUCCESS</h2>
+	All emails:
+	<br>
+	{% for email in emails %}
+		{{email.email}}
+		{{email.created_at}}
+		<a href="/remove/{{email.id}}">REMOVE</a>
+		<br>
+	{% endfor %}
+
+	<form action = '/makenew' method= 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'Input New Email'>
+	</form>
+</body>
+</html>

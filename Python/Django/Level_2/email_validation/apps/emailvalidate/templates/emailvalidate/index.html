@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>Hello</title>
+</head>
+<body>
+	<p>This is interesting</p>
+	<form action = '/login' method = 'post'>
+		{% csrf_token %}
+		Email:<input type = 'text' name = 'email'>
+		<input type = 'submit' value = 'button'>
+	</form>
+</body>
+</html>
