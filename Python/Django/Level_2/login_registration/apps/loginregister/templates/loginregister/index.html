@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Login & Reg | WELCOME</title>
+	<style type="text/css">
+	form{
+		display: block;
+		text-align: right;
+		margin-right: 1000px;
+	}
+	</style>
+</head>
+<body>
+	<h1>WELCOME</h1>
+	<br>
+	<h3>Register</h3>
+	<form action = '/registration' method = 'post'>
+		{% csrf_token %}
+		First Name:<input type = 'text' name = 'first_name'>
+		<br>
+		Last Name:<input type = 'text' name = 'last_name'>
+		<br>
+		Email:<input type = 'text' name = 'email'>
+		<br>
+		Password:<input type = 'password' name = 'password'>
+		<br>
+		Confirm Password:<input type = 'password' name = 'confirm_password'>
+		<br>
+		<input type = 'submit' name = 'REGISTER'>
+	</form>
+
+	<h3>Log In</h3>
+	<form action = '/login' method = 'post'>
+		{% csrf_token %}
+		Email:<input type = 'text' name = 'email'>
+		<br>
+		Password:<input type = 'password' name = 'password'>
+		<br>
+		<input type = 'submit' name = 'LOGIN'>
+	</form>
+</body>
+</html>
