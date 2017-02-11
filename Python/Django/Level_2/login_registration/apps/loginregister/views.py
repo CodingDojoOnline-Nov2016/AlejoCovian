@@ -29,7 +29,7 @@ def register(request):
 		messages.error(request, 'NO EMAIL')
 		return redirect('/')
 	if result == 8:
-		messages.error(request, 'NO PASSWORD')
+		messages.error(request, 'PASSWORD MUST HAVE MIN 8 CHARACTERS')
 		return redirect('/')
 	if result == 10:
 		messages.error(request, 'PASSWORDS DO NOT MATCH')
@@ -56,6 +56,9 @@ def login(request):
 
 	if result == 4:
 		messages.error(request, 'NO PASSWORD INPUT')
+		return redirect('/')
+	if result == 6:
+		messages.error(request, 'NO MATCHING USER')
 		return redirect('/')
 	else:
 		return redirect('/')

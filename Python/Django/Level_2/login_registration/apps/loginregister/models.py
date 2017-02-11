@@ -15,7 +15,7 @@ class UserValidate(models.Manager):
 			return 4
 		if len(email) <= 0:
 			return 6
-		if len(password) <= 0:
+		if len(password) <= 8:
 			return 8
 		if password != confirm_password:
 			return 10
@@ -25,15 +25,20 @@ class UserValidate(models.Manager):
 			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=password)
 			password = password.encode()
 			hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+			print hashed
 			return True
 
 	def login(self, email, password):
+		pw = password.encode()
+		hashed = User.validation.filter(password=password)
 		if len(email) <= 0:
 			return 2
 		if len(password) <= 0:
 			return 4
+		if password != hashed:
+			return 6
 		else:
-			user = User.validation.get(email=email, password=password)
+			
 			return True
 
 
