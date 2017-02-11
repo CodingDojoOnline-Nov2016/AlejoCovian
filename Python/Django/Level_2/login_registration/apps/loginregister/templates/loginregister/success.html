@@ -4,16 +4,8 @@
 </head>
 <body>
 	<h1>SUCCESS</h1>
-	<h3>Welcome to the page, {{request.session.user.first_name}}</h3>
+	<h3>Welcome to the page, {{request.session.user.first_name}}.</h3>
 	<p>Successfully logged in to page. This is a success page that displays the user's name.</p>
-
-	{% for user in users %}
-		{{user.first_name}}
-		{{user.last_name}}
-		{{user.email}}
-		{{user.password}}
-		<br>
-	{% endfor %}
 
 	<form action = '/logout' method = 'post'>
 		{% csrf_token %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -18,6 +19,21 @@ def register(request):
 		}
 		user = request.session['user']
 		return redirect('/success', user)
+	if result == 2:
+		messages.error(request, 'NO FIRST NAME')
+		return redirect('/')
+	if result == 4:
+		messages.error(request, 'NO SECOND NAME')
+		return redirect('/')
+	if result == 6:
+		messages.error(request, 'NO EMAIL')
+		return redirect('/')
+	if result == 8:
+		messages.error(request, 'NO PASSWORD')
+		return redirect('/')
+	if result == 10:
+		messages.error(request, 'PASSWORDS DO NOT MATCH')
+		return redirect('/')
 	else:
 		return redirect('/')
 
@@ -33,6 +49,14 @@ def login(request):
 		user = request.session['user']
 		print user
 		return redirect('/success', user=user)
+
+	if result == 2:
+		messages.error(request, 'NO EMAIL INPUT')
+		return redirect('/')
+
+	if result == 4:
+		messages.error(request, 'NO PASSWORD INPUT')
+		return redirect('/')
 	else:
 		return redirect('/')
 
@@ -46,3 +70,5 @@ def success(request):
 def logout(request):
 	request.session.pop('user')
 	return redirect('/')
+
+

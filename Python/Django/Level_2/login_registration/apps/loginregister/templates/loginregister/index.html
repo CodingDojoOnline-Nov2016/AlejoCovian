@@ -7,6 +7,10 @@
 		text-align: right;
 		margin-right: 1000px;
 	}
+	#messages{
+		display: inline-block;
+		color: red;
+	}
 	</style>
 </head>
 <body>
@@ -27,6 +31,14 @@
 		<br>
 		<input type = 'submit' name = 'REGISTER'>
 	</form>
+
+	<div id = 'messages'>
+	{% if messages %}
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	{% endif %}
+	</div>
 
 	<h3>Log In</h3>
 	<form action = '/login' method = 'post'>

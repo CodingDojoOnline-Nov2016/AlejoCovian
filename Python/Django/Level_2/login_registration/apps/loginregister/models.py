@@ -10,17 +10,17 @@ EMAILregex = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 class UserValidate(models.Manager):
 	def validate(self, first_name, last_name, email, password, confirm_password):
 		if len(first_name) <= 0:
-			return False
+			return 2
 		if len(last_name) <= 0:
-			return False
+			return 4
 		if len(email) <= 0:
-			return False
+			return 6
 		if len(password) <= 0:
-			return False
+			return 8
 		if password != confirm_password:
-			return False
+			return 10
 		elif not EMAILregex.match(email):
-			return False
+			return 12
 		else:
 			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=password)
 			password = password.encode()
@@ -28,8 +28,13 @@ class UserValidate(models.Manager):
 			return True
 
 	def login(self, email, password):
-		user = User.validation.get(email=email, password=password)
-		return True
+		if len(email) <= 0:
+			return 2
+		if len(password) <= 0:
+			return 4
+		else:
+			user = User.validation.get(email=email, password=password)
+			return True
 
 
 class User(models.Model):
