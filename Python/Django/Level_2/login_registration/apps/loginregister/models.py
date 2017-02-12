@@ -22,24 +22,23 @@ class UserValidate(models.Manager):
 		elif not EMAILregex.match(email):
 			return 12
 		else:
-			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=password)
-			password = password.encode()
-			hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+			pw = password.encode()
+			hashed = bcrypt.hashpw(pw, bcrypt.gensalt())
+			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
 			print hashed
 			return True
 
 	def login(self, email, password):
-		pw = password.encode()
-		hashed = User.validation.filter(password=password)
+		user = User.validation.get(email = email)
+		pw = password.encode() # encodes password directly from input
 		if len(email) <= 0:
 			return 2
 		if len(password) <= 0:
 			return 4
-		if password != hashed:
-			return 6
-		else:
-			
+		if bcrypt.hashpw(pw, user.password.encode()):
 			return True
+		else:
+			return 6
 
 
 class User(models.Model):
