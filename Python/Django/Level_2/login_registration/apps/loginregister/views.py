@@ -34,6 +34,12 @@ def register(request):
 	if result == 10:
 		messages.error(request, 'PASSWORDS DO NOT MATCH')
 		return redirect('/')
+	if result == 12:
+		messages.error(request, "PLEASE INPUT A VALID EMAIL")
+		return redirect('/')
+	if result == False:
+		messages.error(request, "FIRST AND LAST NAMES CAN ONLY CONTAIN LETTERS")
+		return redirect('/')
 	else:
 		return redirect('/')
 

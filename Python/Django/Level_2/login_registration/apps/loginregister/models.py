@@ -19,6 +19,10 @@ class UserValidate(models.Manager):
 			return 8
 		if password != confirm_password:
 			return 10
+		if first_name.isalpha() == False:
+			return False
+		if last_name.isalpha() == False:
+			return False
 		elif not EMAILregex.match(email):
 			return 12
 		else:
