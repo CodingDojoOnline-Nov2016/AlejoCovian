@@ -32,11 +32,11 @@ class UserValidate(models.Manager):
 		user = User.validation.get(email = email)
 		pw = password.encode() # encodes password directly from input
 		userpassword = user.password.encode()
-		if len(email) <= 0:
+		if len(email) < 2:
 			return 2
-		if len(password) <= 0:
+		if len(password) < 2:
 			return 4
-		if bcrypt.hashpw(password.encode(), userpassword) == userpassword:
+		if bcrypt.hashpw(pw, userpassword) == userpassword:
 			return True
 		else:
 			return 6
