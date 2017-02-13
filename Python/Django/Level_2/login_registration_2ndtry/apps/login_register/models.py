@@ -8,22 +8,22 @@ REGEXthing = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 # Create your models here.
 class UserValidate(models.Manager):
 	def register(self, first_name, last_name, email, password, confirm_password):
-			if len(first_name)<=0:
-				return 2
-			if len(last_name)<=0:
-				return 4
-			if len(email)<=0:
-				return 6
-			if len(password)<=0:
-				return 8
-			if password != confirm_password:
-				return 10
-			elif not REGEXthing.match(email):
-				return 12
-			else:
-				hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-				User.validation.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
-				return True
+		if len(first_name)<=0:
+			return 2
+		if len(last_name)<=0:
+			return 4
+		if len(email)<=0:
+			return 6
+		if len(password)<=0:
+			return 8
+		if password != confirm_password:
+			return 10
+		elif not REGEXthing.match(email):
+			return 12
+		else:
+			hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
+			return True
 
 	def login(self, email, password):
 		if len(email)<=0:
