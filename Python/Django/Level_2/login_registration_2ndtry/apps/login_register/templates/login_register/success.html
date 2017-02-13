@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>SUCCESS</title>
+</head>
+<body>
+	<h2>SUCCESS</h2>
+	<p>This is a success page displaying the logged in user's name. WELCOME, {{request.session.user}}</p>
+
+
+	{% for user in users %}
+		{{user.first_name}} {{user.email}}
+		<br>
+	{% endfor %}
+
+	<form action = '/logout' method = 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'logout'>
+	</form>
+</body>
+</html>

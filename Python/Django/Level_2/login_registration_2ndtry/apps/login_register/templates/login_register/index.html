@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>INDEX</title>
+	<style type="text/css">
+	form{
+		display: inline-block;
+		text-align: right;
+		margin-left: 20px;
+	}
+	#messages{
+		color:red;
+	}
+	</style>
+</head>
+<body>
+	<h1>LOG IN OR REGISTER</h1>
+	<p>Log In:</p>
+	<form action = '/login' method = 'post'>
+		{% csrf_token %}
+		Email:<input type = 'text' name = 'email'>
+		<br>
+		Password: <input type = 'password' name = 'password'>
+		<br>
+		<input type = 'submit' value = 'login'>
+	</form>
+	<br>
+
+	<div id = 'messages'>
+	{% if messages %}
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	{% endif %}
+	</div>
+
+	<p>Create an account:</p>
+	<form action = '/register' method = 'post'>
+		First Name:<input type = 'text' name = 'first_name'>
+		<br>
+		Last Name:<input type = 'text' name = 'last_name'>
+		<br>
+		Email: <input type = 'text' name = 'email'>
+		<br>
+		Password: <input type = 'password' name = 'password'>
+		<br>
+		Confirm Password: <input type = 'password' name = 'confirm_password'>
+		<br>
+		{% csrf_token %}
+		<input type = 'submit' value = 'register'>
+	</form>
+</body>
+</html>
