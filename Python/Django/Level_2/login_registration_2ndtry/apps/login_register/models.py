@@ -36,7 +36,6 @@ class UserValidate(models.Manager):
 				user = User.validation.get(email = email)
 				userpassword = user.password.encode()
 				if bcrypt.hashpw(pw, userpassword) == userpassword:
-					print 'it matches!'
 					return True
 				else:
 					return 6
@@ -48,6 +47,8 @@ class User(models.Model):
 	last_name = models.CharField(max_length = 45)
 	email = models.CharField(max_length = 255)
 	password = models.CharField(max_length = 255)
-	validation = UserValidate()
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 
+	validation = UserValidate()
 
