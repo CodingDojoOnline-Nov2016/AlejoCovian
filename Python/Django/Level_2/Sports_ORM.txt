@@ -1,4 +1,4 @@
-QUERIES:
+SPORTS ORM:
 
 1. "leagues": League.objects.filter(sports="Baseball"),
 2. "leagues": League.objects.filter(name__contains="Womens'"),
@@ -16,3 +16,22 @@ QUERIES:
 14. "players": Player.objects.filter(first_name="Joshua"),
 15. "players": Player.objects.filter(last_name="Cooper").exclude(first_name="Joshua"),
 16. "players": Player.objects.filter(first_name="Alexander")|Player.objects.filter(first_name="Wyatt"),
+
+
+SPORTS ORM 2
+
+1. Team.objects.filter(league=League.objects.get(name__contains='Atlantic Soccer Conference'))
+2. Player.objects.filter(curr_team=Team.objects.filter(location='Boston'))
+3. Player.objects.filter(curr_team=Team.objects.filter(league=League.objects.filter(name="International Collegiate Baseball Conference")))
+4. Player.objects.filter(last_name='Lopez').filter(curr_team=Team.objects.filter(league=League.objects.filter(name="American Conference of Amateur Football")))
+5. Player.objects.filter(all_teams=Team.objects.filter(league=League.objects.filter(name__contains='Football')))
+6. Team.objects.filter(curr_players=Player.objects.filter(first_name="Sophia"))
+7. Team.objects.filter(curr_players=Player.objects.filter(first_name="Sophia"))
+8. Team.objects.filter(all_players=Player.objects.filter(last_name='Flores')).exclude(team_name='Washington Roughriders')
+9. Team.objects.filter(curr_players=Player.objects.get(first_name='Samuel', last_name='Evans'), all_players=Player.objects.get(first_name='Samuel', last_name='Evans'))
+10. Player.objects.filter(all_teams=Team.objects.filter(location='Manitoba'))
+11. Player.objects.filter(curr_team=Team.objects.exclude(location='Wichita'), all_teams=Team.objects.filter(team_name='Vikings'))
+12. Team.objects.filter(all_players=Player.objects.filter(last_name='Gray', first_name='Jacob')).exclude(location='Oregon')
+13. Player.objects.filter(all_teams=Team.objects.filter(league=League.objects.filter(name='Atlantic Federation of Amateur Baseball Players'))).filter(first_name='Joshua')
+14. Team.objects.annotate(counted=Count('all_players')).filter(counted__gte=12)
+15. Player.objects.annotate(thing=Count('all_teams')).order_by('thing')
