@@ -18,7 +18,9 @@
 	{% for course in courses %}
 	<br>
 		<p>{{course.name}}</p>
-		{{course.description}}
+		{% for description in descriptions %}
+			<p>{{description.description}}</p>
+		{% endfor %}
 		<a href="/course/{{course.id}}">remove</a>
 	</br>
 	{% endfor %}
