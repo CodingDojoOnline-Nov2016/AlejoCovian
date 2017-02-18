@@ -1,0 +1,25 @@
+<html lang = 'en'>
+<head>
+	<meta charset = 'UTF-8'>
+	<title>INDEX</title>
+</head>
+<body>
+	<h1>Random Words</h1>
+	<p>Random words to be generated here:</p>
+	<p>attempt #{{ request.session.attempt }}</p>
+	{{ request.session.word }}
+	<form action = "{% url 'randomwords:create' %}" method = 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'create'>
+	</form>
+
+	<form action = "{% url 'loginregister:success' %}" method='post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'Go back'>
+	</form>
+
+	<form action = "{% url 'loginregister:logout' %}">
+		<input type = 'submit' value = 'Log Out'>
+	</form>
+</body>
+</html>

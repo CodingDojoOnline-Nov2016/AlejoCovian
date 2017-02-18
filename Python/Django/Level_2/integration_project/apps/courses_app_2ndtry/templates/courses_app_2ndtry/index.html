@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>COURSES</title>
+</head>
+<body>
+	<h1>Welcome to courses page</h1>
+	<p>Hulloa</p>
+	<form action = "{% url 'loginregister:logout' %}" method='post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'Log Out'>
+	</form>
+
+	<form action = "{% url 'loginregister:success' %}">
+		{% csrf_token %}
+		<input type = 'submit' value = 'Go Back'>
+	</form>
+
+	<form action = '/makenew' method='post'>
+		{% csrf_token %}
+		Name:
+		<br>
+		<input type = 'text' name = 'name'>
+		<br>
+		Description:
+		<br>
+		<textarea name = 'description' rows='8' cols='40'></textarea>
+		<br>
+		<input type = 'submit' value = 'Add Course'>
+	</form>
+
+	List of courses with description:
+	{% if courses %}
+		{% for course in courses %}
+			<br>
+			<p>{{course.name}}
+				<br>
+			{{course.description}}</p>
+		{% endfor %}
+	{% endif %}
+</body>
+</html>
