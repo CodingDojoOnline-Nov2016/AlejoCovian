@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>PRODUCT | Create New Product</title>
+</head>
+<body>
+	<h1>Create a New Product</h1>
+	<p>Here is where the user will create a new product.</p>
+	<form action = "{% url 'products:create' %}" method = 'post'>
+		{% csrf_token %}
+		Name:<input type = 'text' name = 'name'>
+		Description:<input type = 'text' name = 'description'>
+		Price:<input type = 'text' name = 'price'>
+		<input type = 'submit' value = 'CREATE'>
+	</form>
+	<a href="{% url 'products:index' %}">Home</a>
+</body>
+</html>

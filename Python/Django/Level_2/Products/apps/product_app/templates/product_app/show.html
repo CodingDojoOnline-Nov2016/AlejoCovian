@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>PRODUCT | Show Product</title>
+</head>
+<body>
+	<h2>{{id.name}}</h2>
+	<p>{{id.description}}</p>
+	<p>Showing this product now.</p>
+	<a href="{% url 'products:index' %}">Home</a>
+	<a href="{% url 'products:edit' %}">Edit</a>
+	<a href="{% url 'products:new' %}">New</a>
+</body>
+</html>

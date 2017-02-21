@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title>PRODUCT | Edit Product</title>
+</head>
+<body>
+	<h2>Edit {{id.name}}</h2>
+	<p>This is a page where a user can edit their product.</p>
+	<form action = '/update/{{id.id}}' method='post'>
+		{% csrf_token %}
+		Edit Name:<input type = 'text' name = 'name'>
+		<br>
+		Edit Description:<input type = 'text' description = 'description'>
+		<br>
+		<input type = 'submit' value = 'UPDATE USER'>
+	</form>
+	<a href="{% url 'products:index' %}">Home</a>
+</body>
+</html>
