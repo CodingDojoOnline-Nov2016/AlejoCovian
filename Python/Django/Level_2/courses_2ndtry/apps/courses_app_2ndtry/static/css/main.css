@@ -1,0 +1,78 @@
+h1{
+	color: white;
+	background-color: #3e518e;
+	border-style: solid;
+	border-width: .5px;
+	border-color: black;
+	border-radius: 10px;
+	padding: 10px;
+	padding-left: 20px;
+	font-weight: lighter;
+	font-family: verdana;
+}
+a{
+	background-color: #3e518e;
+	color:white;
+	text-decoration: none;
+	padding:5px;
+	border-radius: 5px;
+	font-family: verdana;
+	font-size: 10px;
+	float: right;
+}
+p{
+	color: #3e518e;
+}
+#full{
+	margin-left: 20px;
+	margin-right: 20px;
+	padding:20px;
+	background-color: lightgray;
+}
+#formatting{
+	background-color: white;
+	padding:1px;
+	padding-top: 15px;
+	margin:5px;
+}
+form{
+	padding: 10px;
+	padding-left: 100px;
+	margin-right: 50px;
+	font-size: 20px;
+	border-style: outset;
+	border-color: #3e518e;
+	border-width: 1px;
+	border-radius: 15px;
+	background-color: white;
+}
+.inputting{
+	font-size: 15px;
+}
+#course{
+	width: 400px;
+	margin:20px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+	padding: 10px;
+	display:block;
+	border-style: outset;
+	border-color: #3e518e;
+	border-radius: 5px;
+	border-width: .5px;
+}
+#createnew{
+	margin-left: 250px;
+	font-size: 12px;
+	color: white;
+	background-color: #3e518e;
+}
+#createdat{
+	display: inline;
+	padding:10px;
+	margin-left: 100px;
+	font-size: 10px;
+	font-family: sans-serif;
+	color: white;
+	background-color: #5e79d1;
+}

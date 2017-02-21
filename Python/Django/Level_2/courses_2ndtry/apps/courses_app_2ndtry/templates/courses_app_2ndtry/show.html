@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>SHOW</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/show.css' %}">
+</head>
+<body>
+	<h2>{{course.name}}</h2>
+	<p>{{course.description}}</p>
+	<p>Delete this course?</p>
+	<a href="/">NO</a>
+	<a href="/destroy/{{course.id}}">DELETE THIS COURSE</a>
+</body>
+</html>

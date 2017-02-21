@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Add Course | COURSES</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+	<h1>COURSES</h1>
+	<div id = 'full'>
+	<p>Hulloa</p>
+	<form action = "{% url 'courses:makenew' %}" method='post'>
+		{% csrf_token %}
+		Name:
+		<br>
+		<input type = 'text' name = 'name' class = 'inputting'>
+		<br>
+		Description:
+		<br>
+		<textarea name = 'description' rows='4' cols='40' class = 'inputting'></textarea>
+		<br>
+		<input type = 'submit' value = 'ADD COURSE' id = 'createnew'>
+	</form>
+
+	<p>List of courses with description:</p>
+	<br>
+	{% if courses %}
+		{% for course in courses %}
+		<div id = 'formatting'>
+			<div id = 'createdat'>{{course.created_at}}</div>
+			<div id = 'course'>
+				<p>{{course.name}}
+					<br>
+				{{course.description}}<a href="/show/{{course.id}}">REMOVE	</a></p>
+			</div>
+		</div>
+		{% endfor %}
+	{% endif %}
+	</div>
+</body>
+</html>
