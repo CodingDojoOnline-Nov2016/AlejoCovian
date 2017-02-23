@@ -8,8 +8,11 @@
 	<form action = "{% url 'products:create' %}" method = 'post'>
 		{% csrf_token %}
 		Name:<input type = 'text' name = 'name'>
+		<br>
 		Description:<input type = 'text' name = 'description'>
+		<br>
 		Price:<input type = 'text' name = 'price'>
+		<br>
 		<input type = 'submit' value = 'CREATE'>
 	</form>
 	<a href="{% url 'products:index' %}">Home</a>

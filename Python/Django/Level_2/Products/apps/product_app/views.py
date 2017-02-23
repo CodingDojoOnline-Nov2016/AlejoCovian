@@ -22,7 +22,7 @@ def edit(request, id):
 	return render(request, 'product_app/edit.html', context)
 
 def update(request, id):
-	Product.validation.get(id=id).update()
+	Product.validation.filter(id=id).update(name=request.POST['name'], description=request.POST['description'], price=request.POST['price'])
 	return redirect(reverse('products:index'))
 
 def new(request):
