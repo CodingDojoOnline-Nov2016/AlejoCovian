@@ -1,0 +1,10 @@
+h2{
+	color: white;
+	background-color: #a7d347;
+	padding: 10px;
+	padding-left: 20px;
+}
+#pet{
+	display: inline-block;
+	padding: 20px;
+}

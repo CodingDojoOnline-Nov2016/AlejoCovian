@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Index | PETS</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body>
+	<h1>Pets</h1>
+	<p>Welcome to the pets website. Here is where you can view pets other people have catalogued, or you can add one yourself.</p>
+	<div id = 'grouping'>	
+	{% for pet in pets %}
+		<div id = 'petid'>
+			{{pet.name}}
+			<br>
+			{{pet.description}}
+			<br>
+			{{pet.price}}
+			<br>
+			<a href="/show/{{pet.id}}" class='button'>VIEW</a>
+			<a href="/edit/{{pet.id}}" class = 'button'>EDIT</a>
+			<br>
+			<a href="/destroy/{{pet.id}}" id = 'toremove'>REMOVE</a>
+		</div>
+	{% endfor %}
+	</div>
+	<a href="/new" id = 'createnew'>NEW PET</a>
+</body>
+</html>

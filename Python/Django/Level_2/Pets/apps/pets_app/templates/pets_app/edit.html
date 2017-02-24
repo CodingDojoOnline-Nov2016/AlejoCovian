@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>Edit | Pets</title>
+</head>
+<body>
+	<h2>Edit {{id.name}}</h2>
+	<p>Here is where will be a form allowing the user to edit pets.</p>
+	<form action = '/update/{{id.id}}' method='post'>
+		{% csrf_token %}
+		Pet Name:<input type = 'text' name = 'name'>
+		<br>
+		Pet Description:<input type = 'text' name = 'description'>
+		<br>
+		Pet Price:<input type = 'text' name = 'price'>
+		<br>
+		<input type = 'submit' name = 'change'>
+	</form>
+	{{id.name}}
+	{{id.description}}
+	{{id.price}}
+	<a href="/">Home</a>
+</body>
+</html>

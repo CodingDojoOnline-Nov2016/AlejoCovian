@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>Create New User | Pets</title>
+</head>
+<body>
+	<h2>Create a New Pet:</h2>
+	<p>This is where one creates a new pet.</p>
+	<form action = "{% url 'pets:create' %}" method='post'>
+		{% csrf_token %}
+		Pet Name:<input type = 'text' name = 'name'>
+		<br>
+		Pet Description:<input type = 'text' name = 'description'>
+		<br>
+		Pet Price:<input type = 'text' name = 'price'> 
+		<br>
+		<input type = 'submit' value = 'Create Pet'>
+	</form>
+	<a href="/">Home</a>
+</body>
+</html>

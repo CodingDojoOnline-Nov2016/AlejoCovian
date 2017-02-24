@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>{{id.name}} | PETS</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/show.css' %}">
+</head>
+<body>
+		<h2>{{id.name}}</h2>
+	<div id = 'pet'>
+		{{id.name}}
+		<br>
+		{{id.description}}
+		<br>
+		{{id.price}}
+		<br>
+	</div>
+	<a href="/edit/{{id.id}}">Edit</a>
+	<a href="/destroy/{{id.id}}">Remove</a>
+	<br>
+	<a href="/">Home</a>
+</body>
+</html>
