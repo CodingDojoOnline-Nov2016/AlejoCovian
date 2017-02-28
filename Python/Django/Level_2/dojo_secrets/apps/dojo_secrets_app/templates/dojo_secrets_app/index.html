@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Login or Register | Dojo Secrets</title>
+</head>
+<body>
+	<h1>Dojo Secrets</h1>
+	<p>Ta-da</p>
+
+	<form action = '/login' method='post'>
+		{% csrf_token %}
+		Email:<input type = 'text' name = 'email'>
+		Password:<input type = 'password' name = 'password'>
+		<input type = 'submit' value = 'Log In'>
+	</form>
+	<p>Register:</p>
+	<form action = '/register' method='post'>
+		{% csrf_token %}
+		First Name:<input type = 'text' name = 'first_name'>
+		<br>
+		Last Name:<input type = 'text' name = 'last_name'>
+		<br>
+		Email<input type = 'text' name = 'email'>
+		<br>
+		Password:<input type = 'password' name = 'password'>
+		<br>
+		Confirm Password:<input type = 'password' name = 'confirm_password'>
+		<br>
+		<input type = 'submit' value = 'Register'>
+	</form>
+
+</body>
+</html>
