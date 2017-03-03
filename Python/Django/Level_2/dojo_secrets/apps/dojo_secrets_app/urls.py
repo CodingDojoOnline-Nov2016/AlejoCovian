@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^secrets$', views.secrets),
 	url(r'^newsecret$', views.newsecret),
 	url(r'^delete/(?P<id>\d+)$', views.delete),
+	url(r'^like$', views.like),
 	url(r'^popular$', views.popular),
 	url(r'^logout$', views.logout),
 ]
