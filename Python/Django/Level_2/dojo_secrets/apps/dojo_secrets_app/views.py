@@ -46,7 +46,7 @@ def secrets(request):
 	context = {
 		'users': User.validation.all(),
 		'messages': Message.objects.all().order_by('-id'), 
-		##'likes': Like.objects.filter(message=Message.objects.get()),
+		'likes': Message.messagelikes,
 	}
 	return render(request, 'dojo_secrets_app/secrets.html', context)
 
