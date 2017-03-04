@@ -1,0 +1,44 @@
+*{
+	font-family: cursive;
+}
+h1{
+	color: white;
+	background-color: #2e3584;
+	padding: 10px;
+	padding-left: 40px;
+}
+#intro{
+	width: 800px;
+	margin: 40px;
+}
+#loginp{
+	margin-left: 90px;
+	color: #2e3584;
+	font-weight: bold;
+}
+#login{
+	display: inline-block;
+	margin-left: 100px;
+	padding: 10px;
+	border-style: solid;
+	border-width: .5px;
+	border-color: #2e3584;
+}
+#registerp{
+	margin-right: 270px;
+	color: #2e3584;
+	font-weight: bold;
+}
+#register{
+	display: block;
+	margin:20px;
+	width: 426px;
+	text-align: right;
+	margin-left: 100px;
+	padding: 10px;
+	border-style: solid;
+	border-width: .5px;
+	border-color: #2e3584;
+}
+
+

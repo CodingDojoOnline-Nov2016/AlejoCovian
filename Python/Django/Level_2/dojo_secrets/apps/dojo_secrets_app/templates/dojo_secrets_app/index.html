@@ -1,32 +1,39 @@
 <html>
 <head>
 	<title>Login or Register | Dojo Secrets</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 <body>
 	<h1>Dojo Secrets</h1>
-	<p>Ta-da</p>
+	<p id = 'intro'>Welcome to Dojo Secrets, the world's #1 website for sharing and liking secrets anonymously. If you are already registered with us, log in below. If you are new to the site and have never been registered with us, create an account to join in the fun.</p>
 
-	<form action = '/login' method='post'>
-		{% csrf_token %}
-		Email:<input type = 'text' name = 'email'>
-		Password:<input type = 'password' name = 'password'>
-		<input type = 'submit' value = 'Log In'>
-	</form>
-	<p>Register:</p>
-	<form action = '/register' method='post'>
-		{% csrf_token %}
-		First Name:<input type = 'text' name = 'first_name'>
-		<br>
-		Last Name:<input type = 'text' name = 'last_name'>
-		<br>
-		Email<input type = 'text' name = 'email'>
-		<br>
-		Password:<input type = 'password' name = 'password'>
-		<br>
-		Confirm Password:<input type = 'password' name = 'confirm_password'>
-		<br>
-		<input type = 'submit' value = 'Register'>
-	</form>
+	<div id = 'login'>
+		<p id = 'loginp'>LOG IN</p>
+		<form action = '/login' method='post'>
+			{% csrf_token %}
+			Email:<input type = 'text' name = 'email'>
+			Password:<input type = 'password' name = 'password'>
+			<input type = 'submit' value = 'Log In'>
+		</form>
+	</div>
 
+	<div id = 'register'>
+		<p id = 'registerp'>REGISTER</p>
+		<form action = '/register' method='post'>
+			{% csrf_token %}
+			First Name:<input type = 'text' name = 'first_name'>
+			<br>
+			Last Name:<input type = 'text' name = 'last_name'>
+			<br>
+			Email<input type = 'text' name = 'email'>
+			<br>
+			Password:<input type = 'password' name = 'password'>
+			<br>
+			Confirm Password:<input type = 'password' name = 'confirm_password'>
+			<br>
+			<input type = 'submit' value = 'Register'>
+		</form>
+	</div>
 </body>
 </html>

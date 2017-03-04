@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import User, Message, Like
 from django.db.models import Count
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def index(request):
@@ -45,7 +46,7 @@ def secrets(request):
 	context = {
 		'users': User.validation.all(),
 		'messages': Message.objects.all().order_by('-id'), 
-		'likes': Message.objects.annotate(Count('id'))
+		##'likes': Like.objects.filter(message=Message.objects.get()),
 	}
 	return render(request, 'dojo_secrets_app/secrets.html', context)
 
@@ -67,7 +68,10 @@ def like(request):
 	print User.validation.all()
 	thing = request.POST['user']
 	message = Message.objects.get(id=request.POST['message'])
-	Like.objects.create(message=message, user=User.validation.get(id=thing))
+	try:
+		Like.objects.get(message=message, user=User.validation.get(id=thing))
+	except ObjectDoesNotExist:
+		Like.objects.create(message=message, user=User.validation.get(id=thing))
 	return redirect('/secrets')
 
 def logout(request):
