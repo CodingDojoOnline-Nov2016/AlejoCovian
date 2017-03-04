@@ -58,7 +58,12 @@ def newsecret(request):
 	return redirect('/secrets')
 
 def popular(request):
-	return render(request, 'dojo_secrets_app/popular.html')
+	context = {
+		'users': User.validation.all(),
+		'messages': Message.objects.all().order_by('messagelikes'),
+		'likes': Message.messagelikes,
+	}
+	return render(request, 'dojo_secrets_app/popular.html', context)
 
 def delete(request, id):
 	Message.objects.get(id=id).delete()
