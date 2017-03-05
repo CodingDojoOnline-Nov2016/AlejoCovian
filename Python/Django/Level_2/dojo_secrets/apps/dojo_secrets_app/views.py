@@ -15,10 +15,13 @@ def login(request):
 	result = User.validation.validatelogin(request.POST['email'], request.POST['password'])
 	if result == 2:
 		messages.error(request, 'email field cannot be blank')
+		return redirect('/')
 	if result == 4:
 		messages.error(request, 'password field cannot be blank')
+		return redirect('/')
 	if result == 6:
 		messages.error(request, 'incorrect password')
+		return redirect('/')
 	if result == 8:
 		messages.error(request, 'email does not exist in database')
 	else:
