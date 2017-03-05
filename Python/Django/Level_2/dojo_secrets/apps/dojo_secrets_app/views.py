@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User, Message, Like
 from django.db.models import Count
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -13,9 +14,13 @@ def index(request):
 def login(request):
 	result = User.validation.validatelogin(request.POST['email'], request.POST['password'])
 	if result == 2:
-		return redirect('/')
+		messages.error(request, 'email field cannot be blank')
 	if result == 4:
-		return redirect('/')
+		messages.error(request, 'password field cannot be blank')
+	if result == 6:
+		messages.error(request, 'incorrect password')
+	if result == 8:
+		messages.error(request, 'email does not exist in database')
 	else:
 		email = request.POST['email']
 		getbyemail = User.validation.get(email=email)
@@ -26,6 +31,7 @@ def login(request):
 			'email': getbyemail.email
 		}
 		return redirect('/secrets')
+	return redirect('/')
 
 def register(request):
 	result = User.validation.validateregister(request.POST['first_name'], request.POST['last_name'], request.POST['email'], request.POST['password'], request.POST['confirm_password'])
@@ -40,6 +46,20 @@ def register(request):
 		}
 		return redirect('/secrets')
 	else:
+		if result == 2:
+			messages.error(request, 'first name cannot be blank')
+		if result == 4:
+			messages.error(request, 'last name cannot be blank')
+		if result == 6:
+			messages.error(request, 'email cannot be blank')
+		if result == 8:
+			messages.error(request, 'password cannot be blank')
+		if result == 10:
+			messages.error(request, 'passwords must match')
+		if result == 12:
+			messages.error(request, 'invalid email format. example@this.com')
+		if result == 14:
+			messages.error(request, 'email already in database')
 		return redirect('/')
 
 def secrets(request):
@@ -60,7 +80,7 @@ def newsecret(request):
 def popular(request):
 	context = {
 		'users': User.validation.all(),
-		'messages': Message.objects.all().order_by('messagelikes'),
+		'messages': Message.objects.all(),
 		'likes': Message.messagelikes,
 	}
 	return render(request, 'dojo_secrets_app/popular.html', context)
@@ -78,6 +98,16 @@ def like(request):
 	except ObjectDoesNotExist:
 		Like.objects.create(message=message, user=User.validation.get(id=thing))
 	return redirect('/secrets')
+
+def likepopular(request):
+	print User.validation.all()
+	thing = request.POST['user']
+	message = Message.objects.get(id=request.POST['message'])
+	try:
+		Like.objects.get(message=message, user=User.validation.get(id=thing))
+	except ObjectDoesNotExist:
+		Like.objects.create(message=message, user=User.validation.get(id=thing))
+	return redirect('/popular')
 
 def logout(request):
 	del request.session['user']

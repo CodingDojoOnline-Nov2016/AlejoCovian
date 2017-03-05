@@ -21,9 +21,12 @@ class UserValidate(models.Manager):
 		elif not REGEX.match(email):
 			return 12
 		else:
-			hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-			User.validation.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
-			return True
+			if User.validation.filter(email=email).exists():
+				return 14
+			else:
+				hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+				User.validation.create(first_name=first_name, last_name=last_name, email=email, password=hashed)
+				return True
 
 	def validatelogin(self, email, password):
 		if len(email)<=0:
@@ -40,7 +43,8 @@ class UserValidate(models.Manager):
 				else:
 					return 6
 			except:
-				return 8
+				if not User.validation.filter(email=email).exists() :
+					return 8
 
 class User(models.Model):
 	first_name = models.CharField(max_length=45)

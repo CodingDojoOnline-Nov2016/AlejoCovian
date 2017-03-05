@@ -18,6 +18,14 @@
 		</form>
 	</div>
 
+	<div id = 'messages'>
+		{% if messages %}
+			{% for message in messages %}
+				{{message}}
+			{% endfor %}
+		{% endif %}
+	</div>
+	
 	<div id = 'register'>
 		<p id = 'registerp'>REGISTER</p>
 		<form action = '/register' method='post'>
@@ -35,5 +43,7 @@
 			<input type = 'submit' value = 'Register'>
 		</form>
 	</div>
+
 </body>
 </html>
+
