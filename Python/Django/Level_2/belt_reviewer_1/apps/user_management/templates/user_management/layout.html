@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> {{ title }} </title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'user_management/css/normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user_management/css/skeleton.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user_management/css/styles.css' %}">
+	{% block head %}{% endblock %}
+</head>
+<body>
+
+	{% block body %}{% endblock %}
+	
+</body>
+</html>

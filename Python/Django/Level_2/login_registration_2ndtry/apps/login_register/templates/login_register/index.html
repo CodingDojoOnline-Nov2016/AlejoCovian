@@ -15,7 +15,7 @@
 <body>
 	<h1>LOG IN OR REGISTER</h1>
 	<p>Log In:</p>
-	<form action = '/login' method = 'post'>
+	<form action = "{% url 'loginregister:login' %}" method = 'post'>
 		{% csrf_token %}
 		Email:<input type = 'text' name = 'email'>
 		<br>
@@ -34,7 +34,7 @@
 	</div>
 
 	<p>Create an account:</p>
-	<form action = '/register' method = 'post'>
+	<form action = "{% url 'loginregister:register' %}" method = 'post'>
 		First Name:<input type = 'text' name = 'first_name'>
 		<br>
 		Last Name:<input type = 'text' name = 'last_name'>

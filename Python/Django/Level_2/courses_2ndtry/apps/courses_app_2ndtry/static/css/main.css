@@ -35,7 +35,7 @@ p{
 	padding-top: 15px;
 	margin:5px;
 }
-form{
+#formthing{
 	padding: 10px;
 	padding-left: 100px;
 	margin-right: 50px;
@@ -45,6 +45,9 @@ form{
 	border-width: 1px;
 	border-radius: 15px;
 	background-color: white;
+}
+#messages{
+	color: red;
 }
 .inputting{
 	font-size: 15px;

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+	
+	function draw_right_stars(num){
+		var blank = ""
+		var spacerange = 75 - num;
+		for (var i = 0; i < spacerange; i++){
+			blank += " "
+		}
+		for (var i = 0; i < num; i++){
+			blank += "*"
+		}
+		console.log(blank)
+	}
+
+	function draw_left_stars(num){
+		var blank = ""
+		var spacerange = 75-num
+		for(var i = 0; i < num; i++){
+			blank += "*"
+		}
+		for(var i = 0; i < spacerange; i++){
+			blank += " "
+		}
+		console.log(blank)
+	}
+
+	function draw_centre_stars(num){
+		var blank = ""
+		var spacerange = 75-num
+		for(var i = 0; i<spacerange/2;i++){
+			blank += " "
+		}
+		for(var i = 0; i<num;i++){
+			blank += "*"
+		}
+		for(var i = 0; i<spacerange/2;i++){
+			blank+=" "
+		}
+		console.log(blank)
+	}
+
+
+	draw_right_stars(7)
+	draw_left_stars(7)
+	draw_centre_stars(7)
+</script>

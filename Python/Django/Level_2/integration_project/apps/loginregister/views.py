@@ -20,10 +20,10 @@ def register(request):
 		user = request.session['user']
 		return redirect('/success', user)
 	if result == 2:
-		messages.error(request, 'INPUT FIRST NAME OF MIN 2 CHARACTERS')
+		messages.error(request, 'PLEASE INPUT FIRST NAME OF MIN 2 CHARACTERS')
 		return redirect('/')
 	if result == 4:
-		messages.error(request, 'INPUT FIRST NAME OF MIN 2 CHARACTERS')
+		messages.error(request, 'PLEASE INPUT LAST NAME OF MIN 2 CHARACTERS')
 		return redirect('/')
 	if result == 6:
 		messages.error(request, 'NO EMAIL')

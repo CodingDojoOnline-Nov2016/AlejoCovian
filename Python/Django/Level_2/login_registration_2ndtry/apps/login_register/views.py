@@ -7,7 +7,7 @@ def index(request):
 	if 'user' not in request.session:
 		return render(request, 'login_register/index.html')
 	else:
-		return redirect('/success')
+		return redirect(reverse('loginregister: success'))
 
 def login(request):
 	result = User.validation.login(request.POST['email'], request.POST['password'])
@@ -27,7 +27,7 @@ def login(request):
 		email = request.POST['email']
 		user = User.validation.get(email = email)
 		request.session['user'] = user.all()
-		return redirect('/success')
+		return redirect(reverse('loginregister:success'))
 
 def register(request):
 	result = User.validation.register(request.POST['first_name'], request.POST['last_name'], request.POST['email'], request.POST['password'], request.POST['confirm_password'])
@@ -48,7 +48,7 @@ def register(request):
 	if result == 12:
 		messages.error(request, 'Email must be valid')
 	else:
-		return redirect('/success')
+		return redirect(reverse('loginregister:success'))
 
 def success(request):
 	users = User.validation.all()
@@ -60,5 +60,5 @@ def success(request):
 
 def logout(request):
 	del request.session['user']
-	return redirect('/')
+	return redirect(reverse('loginregister:index'))
 

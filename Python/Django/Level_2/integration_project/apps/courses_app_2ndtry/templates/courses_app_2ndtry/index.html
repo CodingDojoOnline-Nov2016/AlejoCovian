@@ -1,21 +1,23 @@
 <html>
 <head>
 	<title>COURSES</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/courses.css' %}" charset="utf-8">
 </head>
 <body>
 	<h1>Welcome to courses page</h1>
 	<p>Hulloa</p>
-	<form action = "{% url 'loginregister:logout' %}" method='post'>
+	<form action = "{% url 'loginregister:logout' %}" method='post' id = 'logout'>
 		{% csrf_token %}
 		<input type = 'submit' value = 'Log Out'>
 	</form>
 
-	<form action = "{% url 'loginregister:success' %}">
+	<form action = "{% url 'loginregister:success' %}" id = 'goback'>
 		{% csrf_token %}
 		<input type = 'submit' value = 'Go Back'>
 	</form>
 
-	<form action = '/makenew' method='post'>
+	<form action = '/makenew' method='post' id ='addcourse'>
 		{% csrf_token %}
 		Name:
 		<br>
@@ -28,13 +30,14 @@
 		<input type = 'submit' value = 'Add Course'>
 	</form>
 
-	List of courses with description:
+	<p id = 'listcourses'>List of courses with description:</p>
 	{% if courses %}
 		{% for course in courses %}
-			<br>
+		<div id = 'course'>
 			<p>{{course.name}}
 				<br>
 			{{course.description}}</p>
+		</div>
 		{% endfor %}
 	{% endif %}
 </body>

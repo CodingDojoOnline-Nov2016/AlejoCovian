@@ -16,13 +16,7 @@
 	</form>
 
 	{% for course in courses %}
-	<br>
-		<p>{{course.name}}</p>
-		{% for description in descriptions %}
-			<p>{{description.description}}</p>
-		{% endfor %}
-		<a href="/course/{{course.id}}">remove</a>
-	</br>
+		{{course.name}}
 	{% endfor %}
-</body>
+	</body>
 </html>

@@ -7,7 +7,18 @@
 <body>
 	<h1>COURSES</h1>
 	<div id = 'full'>
-	<p>Hulloa</p>
+	<p>Welcome to the Courses Page. This page allows the user to insert courses with descriptions into a database. This database is then displayed.</p>
+	<p>Fill out the form below (complete with name and description) in order to generate a new course:</p>
+
+	<div id = 'formthing'>
+
+		{% if messages %}
+			{% for message in messages %}
+				{{message}}
+			{% endfor %}
+		{% endif %}
+
+
 	<form action = "{% url 'courses:makenew' %}" method='post'>
 		{% csrf_token %}
 		Name:
@@ -20,6 +31,7 @@
 		<br>
 		<input type = 'submit' value = 'ADD COURSE' id = 'createnew'>
 	</form>
+	</div>
 
 	<p>List of courses with description:</p>
 	{% if courses %}

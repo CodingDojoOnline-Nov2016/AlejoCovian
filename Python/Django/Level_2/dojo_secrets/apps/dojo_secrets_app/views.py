@@ -83,8 +83,7 @@ def newsecret(request):
 def popular(request):
 	context = {
 		'users': User.validation.all(),
-		'messages': Message.objects.all(),
-		'likes': Message.messagelikes,
+		'messages': Message.objects.all().order_by('id'),
 	}
 	return render(request, 'dojo_secrets_app/popular.html', context)
 
@@ -93,23 +92,19 @@ def delete(request, id):
 	return redirect('/secrets')
 
 def like(request):
-	print User.validation.all()
-	thing = request.POST['user']
 	message = Message.objects.get(id=request.POST['message'])
 	try:
-		Like.objects.get(message=message, user=User.validation.get(id=thing))
+		Like.objects.get(message=message, user=User.validation.get(id=request.POST['user']))
 	except ObjectDoesNotExist:
-		Like.objects.create(message=message, user=User.validation.get(id=thing))
+		Like.objects.create(message=message, user=User.validation.get(id=request.POST['user']))
 	return redirect('/secrets')
 
 def likepopular(request):
-	print User.validation.all()
-	thing = request.POST['user']
 	message = Message.objects.get(id=request.POST['message'])
 	try:
-		Like.objects.get(message=message, user=User.validation.get(id=thing))
+		Like.objects.get(message=message, user=User.validation.get(id=request.POST['user']))
 	except ObjectDoesNotExist:
-		Like.objects.create(message=message, user=User.validation.get(id=thing))
+		Like.objects.create(message=message, user=User.validation.get(id=request.POST['user']))
 	return redirect('/popular')
 
 def logout(request):

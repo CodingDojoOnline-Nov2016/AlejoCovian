@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+	function drawLeftChars(num, char){
+		var blank = "";
+		var spacerange = 75-num
+		for(var i = 0; i < num; i++){
+			blank += char
+		}
+		for(var i = 0; i < spacerange; i++){
+			blank += " "
+		}
+		console.log(blank)
+	}
+
+	function drawRightChars(num, char){
+		var blank = "";
+		var spacerange = 75-num
+		for(var i = 0; i<spacerange; i++){
+			blank += " "
+		}
+		for(var i = 0; i<num; i++){
+			blank += char
+		}
+		console.log(blank)
+	}
+
+	function drawCentreChars(num, char){
+		var blank = "";
+		var spacerange = 75-num
+		for(var i = 0; i<spacerange/2; i++){
+			blank+= " "
+		}
+		for(var i = 0; i<num; i++){
+			blank+="C"
+		}
+		for(var i = 0; i<spacerange/2; i++){
+			blank+=" "
+		}
+		console.log(blank)
+	}
+
+	drawLeftChars(6, 'A')
+	drawRightChars(6, 'B')
+	drawCentreChars(6,'C')
+</script>

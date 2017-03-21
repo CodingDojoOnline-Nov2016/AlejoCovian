@@ -1,0 +1,32 @@
+{% extends './layout.html' %}
+{% block body %}
+	<h5>Add a new book and leave a review!</h5>
+	<h6> <a href="{% url 'book_review:books' %}">Or check out books that have already been reviewed.</a> </h6>
+	{% for message in messages %}
+		<h6 class = "error">{{ message }}</h6>
+	{% endfor %}
+	<form action = "{% url 'book_review:create' %}" method="post" name="book-review-form" id="book-review-form">
+		{% csrf_token %}
+		<label>Book Title: </label>
+		<input type = "text" name="title" placeholder="1984">
+		<label>Author:</label>
+		<div id = "authors">
+			<label class = "subhead">Choose from the list:</label>
+			<select name="author-select" form="book-review-form">
+				{% for book in authors %}
+					<option value="{{ book.author }}">{{ book.author }}</option>
+				{% empty %}
+					<option value="">N/A</option>
+				{% endfor %}
+			</select>
+			<label class="subhead">Add a new author: </label>
+			<input type="text" name="author" placeholder="George Orwell">
+		</div>
+			<label>Review: </label>
+			<textarea rows="15" cols="40" name="review"></textarea>
+			<label>Rating:</label>
+			<input type="number" name="rating" min="0" max="5" value="0"><span>stars</span>
+			<input type="submit" value = "Add Book Review">
+	</form>
+{% endblock %}
+

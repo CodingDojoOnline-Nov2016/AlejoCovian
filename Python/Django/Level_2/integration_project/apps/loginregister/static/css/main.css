@@ -1,0 +1,50 @@
+h1{
+	color: white;
+	padding: 10px;
+	background-color: #f44245;
+	padding-left: 20px;
+}
+h3{
+	margin-right: 40px;
+}
+#register input{
+	font-size: 15px;
+	margin: 2px;
+}
+p{
+	margin-left: 20px;
+	width: 500px;
+}
+#messages{
+	display: inline-block;
+	color: red;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.submit{
+	color: #f44245;
+	border-style: solid;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: white;
+	margin-top: 10px;
+}
+#register{
+	display: inline-block;
+	text-align: right;
+	float: left;
+	margin-left: 70px;
+	border-style: outset;
+	border-color: lightgray;
+	padding: 15px;
+}
+#login{
+	display: inline-block;
+	text-align: right;
+	margin-left: 100px;
+
+}
+
+
+

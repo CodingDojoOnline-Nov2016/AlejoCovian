@@ -1,0 +1,29 @@
+h1{
+	color: white;
+	background-color: #f44245;
+	padding: 10px;
+	padding-left: 30px;
+}
+h3{
+	margin-left: 20px;
+}
+p{
+	width: 700px;
+	margin-left: 20px;
+}
+a{
+	margin: 20px;
+}
+.game{
+	display: inline-block;
+	padding: 20px;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: .5px;
+	color: white;
+	background-color: #f44245;
+}
+#logout{
+	margin-left: 20px;
+}
+

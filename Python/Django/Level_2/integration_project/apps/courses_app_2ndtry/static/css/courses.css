@@ -1,0 +1,30 @@
+h1{
+	color: white;
+	background-color: #f44245;
+	padding: 10px;
+	padding-left: 20px;
+}
+p{
+	margin-left: 20px;
+}
+#logout{
+	margin-left: 200px;
+}
+#goback{
+	margin-left: 200px;
+}
+#addcourse{
+	margin-left: 400px;
+	font-size: 20px;
+}
+input{
+	font-size: 14px;
+}
+#course{
+	font-size: 20px;
+	margin-left: 300px;
+}
+#listcourses{
+	margin-left: 200px;
+}
+

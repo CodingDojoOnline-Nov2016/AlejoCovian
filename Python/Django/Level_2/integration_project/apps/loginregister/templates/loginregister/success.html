@@ -1,22 +1,45 @@
 <html>
 <head>
 	<title>Login and Reg | SUCCESS</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/success.css' %}">
 </head>
 <body>
 	<h1>SUCCESS</h1>
 	<h3>Welcome to the page, {{request.session.user.first_name}}.</h3>
-	<p>Successfully logged in to page. This is a success page that displays the user's name.</p>
+	<p>Successfully logged in to page. This is a success page that displays the user's name, and gives the user several options in which game s/he wants to play. Here are the options:</p>
 
 
-	<a href="{% url 'courses:index' %}">Courses</a>
-	<a href="{% url 'surveyform:index' %}">Survey Form</a>
-	<a href="{% url 'randomwords:index' %}">Random Words</a>
-	<a href="{% url 'timedisplay:index' %}">Time Display</a>
+	<a href="{% url 'courses:index' %}">
+		<div class = 'game' id = 'courses'>
+			COURSES
+		</div>
+	</a>
+
+
+	<a href="{% url 'surveyform:index' %}">
+			<div class = 'game' id = 'surveyform'>
+				SURVEY FORM
+			</div>
+	</a>
+
+	<a href="{% url 'randomwords:index' %}">
+		<div class = 'game' id = 'randomwords'>
+			RANDOM WORDS
+		</div>
+	</a>
+
+	<a href="{% url 'timedisplay:index' %}">
+		<div class = 'game' id = 'timedisplay'>
+			TIME DISPLAY
+		</div>
+	</a>
+
 	<br>
 	<br>
 	<form action = "{% url 'loginregister:logout' %}" method = 'post'>
 		{% csrf_token %}
-		<input type = 'submit' value = 'Log Out'>
+		<input type = 'submit' value = 'Log Out' id = 'logout'>
 	</form>
 
 </body>

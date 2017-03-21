@@ -1,0 +1,37 @@
+{% extends './layout.html' %}
+{% block body %}
+
+	{% for message in messages %}
+		<h5 class="error">{{ message }}</h5>
+	{% endfor %}
+	<h1>Login or Register</h1>
+	<div id = "registration-form">
+		<form action="{% url 'user_management:create' %}" method="post">
+			{% csrf_token %}
+			<label>Alias: </label>
+			<input type="text" name="alias" placeholder="trilobite">
+			<label>First Name: </label>
+			<input type="text" name="first-name" placeholder="Alex">
+			<label>Last Name: </label>
+			<input type ="text" name="last-name" placeholder="Covian">
+			<label>Email:</label>
+			<input type="text" name="email" placeholder="example@email.thing">
+			<label>Password: </label>
+			<input type = "password" name="password">
+			<p>*Password must be at least 8 characters.</p>
+			<input type="password" name="confirm">
+			<input type="submit" name="Sign Up">
+		</form>
+	</div>
+
+	<div id="login-form">
+		<form action="{% url 'user_management:login' %}" method="post">
+			{% csrf_token %}
+			<label>Email: </label>
+			<input type = "text" name="email" placeholder="example@email.thing">
+			<label>Password: </label>
+			<input type="password" name="password">
+			<input type="submit" value="Log In">
+		</form>
+	</div>
+{% endblock %}

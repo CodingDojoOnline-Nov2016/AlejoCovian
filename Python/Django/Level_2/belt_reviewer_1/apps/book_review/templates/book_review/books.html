@@ -1,0 +1,43 @@
+{% extends './layout.html' %}
+{% block welcome %}
+	{% if request.session.user_id %}
+		<h4>Welcome, {{ request.session.alias }}</h4>
+	{% else %}
+		<h4>Sign in to leave a review.</h4>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<div id = "recent-reviews">
+		<h5>Recent Book Reviews</h5>
+		<ul>
+			{% for review in reviews %}
+				<li>
+					<h6><a href="{% url 'book_review:show' review.review_book.id %}">{{ review.review_book.title }}</a></h6>
+					<p>Rating: {{ review.rating }} stars</p>
+					<p> <a href="{% url 'user_management:show' review_user.id %}">{{ review.review_user.alias }}</a> says: {{ review.review }} </p>
+					<p>Posted on: {{ review.created_at }}</p>
+					{% if request.session.user_id == review.review_user.id %}
+						<form id = "delete" action="{% url 'book_review:destroy' review.id %} method='post'">
+							{% csrf_token %}
+							<input type = "submit" value="Delete Review">
+						</form>
+					{% endif %}
+				</li>
+			{% empty %}
+				<h6>Uh oh, looks as though there aren't any reviews yet. <a href="{% url 'book_review:new' %}">Create one?</a> </h6>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div id = "books">
+		<h5>Ohter Books with Reviews</h5>
+		<ul>
+			{% for book in books %}
+				<li> <a href="{% url 'book_review:show' book.id %}">{{ book.title }}</a> </li>
+			{% empty %}
+				<h6>Darn, there are no books yet!</h6>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

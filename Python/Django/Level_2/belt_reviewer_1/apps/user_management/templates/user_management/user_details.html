@@ -1,0 +1,23 @@
+{% extends '../book_review/layout.html' %}
+{% block body %}
+
+	{% if messages %}
+		{% for message in messages %}
+			<h5 class="error">{{ message }}</h5>
+		{% endfor %}
+	{% endif %}
+
+	<h2>User Alias: {{ user_info.alias }}</h2>
+	<p>Name: {{ user_info.first_name }} {{ user_info.last_name }}</p>
+	<p>Email: {{user_info.email }}</p>
+	<p>Total Reviews: {{user_info.total_reviews  }}</p>
+	<p>Posted reviews about the following books:</p>
+	<ul>
+		{% for book in user_info.books %}
+			<li><a href="{% url 'book_review:show' book.id %}">{{book.title}}</a></li>
+		{% empty %}
+			<li>Looks like you haven't written any reviews</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

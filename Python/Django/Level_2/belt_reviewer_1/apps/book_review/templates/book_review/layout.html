@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'book_review/css/normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'book_review/css/skeleton.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'book_review/css/styles.css' %}">
+	{% block head %}{% endblock %}
+</head>
+<body>
+	{% block welcome %}{% endblock %}
+	<div id = "top-nav">
+		<a class="button" href="{% url 'book_review:index' %}">Home</a>
+		{% if request.session.user_id %}
+			<a class = "button" href="{% url 'user_management:show' request.session.user_id %}">My Reviews</a>
+			<a class = "button" href="{% url 'book_review:new' %}">Write a New Review</a>
+			<a class = "button" href="{% url 'user_management:logout' %}">Log Out</a>
+		{% else %}
+			<a class = "button" href="{% url 'user_management:index' %}">Login or Register</a>
+		{% endif %}
+	</div>
+	{% block body %}{% endblock %}
+</body>
+</html>

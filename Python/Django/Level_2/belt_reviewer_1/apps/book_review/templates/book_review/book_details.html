@@ -1,0 +1,37 @@
+{% extends './layout.html' %}
+{% block body %}
+	<div id = "book-reviews">
+		<h5>{{ book_info.title }}</h5>
+		<p>Author: {{ book_info.author }}</p>
+		<h6>Reviews:</h6>
+		<ul>
+			{% for review in book_info.reviews %}
+				<li>
+					<p>Rating: {{ review.rating }} stars</p>
+					<p> <a href="{% url 'user_management:show' review.review_user.id %}">{{ review.review_user.alias }}</a> says: {{ review.review }} </p>
+					<p>Posted on: {{ review.created_at }}</p>
+					{% if request.session.user_id == review.review_user.id %}
+						<form id="delete" action="{% url 'book_review:destroy' review.id %}" method="post">
+							{% csrf_token %}
+							<input type="submit" value="Delete Review">
+						</form>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div id ="book-udate">
+		{% for message in messages %}
+			<h6 class="error">{{ message }}</h6>
+		{% endfor %}
+		<form action="{% url 'book_review:show' book_info.book_id %}" method="post">
+			{% csrf_token %}
+			<label>Add a Review:</label>
+			<textarea name="review" rows="15" cols="40"></textarea>
+			<label>Rating:</label>
+			<input type ="number" name="rating" min="0" max="5" value="0">
+			<input type="submit" value="Submit Review">
+		</form>
+	</div>
+{% endblock %}
