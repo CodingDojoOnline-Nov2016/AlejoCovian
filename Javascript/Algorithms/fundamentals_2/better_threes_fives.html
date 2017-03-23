@@ -1,0 +1,16 @@
+<script type="text/javascript">
+	function betterThreesFives(start,end){
+		var sum = 0;
+		for (var i = start; i <= end; i++) {
+			if (i%3==0) {
+				sum += i
+			}
+			else if (i%5==0) {
+				sum+=i
+			};
+		};
+		console.log(sum)
+	}
+
+	betterThreesFives(100,4000)
+</script>
