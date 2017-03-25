@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>WELCOME</title>
+</head>
+<body>
+	<form action = '/login' method='post'>
+		{% csrf_token %}
+		<input type = 'email' name='email' placeholder='this@example.net'>
+		<input type = 'password' name='password' placeholder='password'>
+		<input type = 'submit' value = 'log in'>
+	</form>
+
+	<form action = '/register' method='post'>
+		{% csrf_token %}
+		<input type = 'text' name='first_name' placeholder='First Name'><br>
+		<input type = 'text' name='last_name' placeholder='Last Name'><br>
+		<input type = 'email' name='email' placeholder='Email (this@example.net)'><br>
+		<input type = 'password' name='password' placeholder='password (8 chars)'><br>
+		<input type = 'password' name='confirm_password' placeholder='confirm password'><br>
+		<input type = 'submit' value = 'register'>
+	</form>
+
+</body>
+</html>
