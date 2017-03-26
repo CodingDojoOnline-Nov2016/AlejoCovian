@@ -9,7 +9,9 @@
 		<input type = 'password' name='password' placeholder='password'>
 		<input type = 'submit' value = 'log in'>
 	</form>
-
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
 	<form action = '/register' method='post'>
 		{% csrf_token %}
 		<input type = 'text' name='first_name' placeholder='First Name'><br>

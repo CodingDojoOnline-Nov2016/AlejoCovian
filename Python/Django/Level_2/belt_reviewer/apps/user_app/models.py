@@ -14,10 +14,10 @@ class UserManager(models.Manager):
 		hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
 		return hashed_password
 
-	def compare_passwords(self, password):
-		password = password.encode()
+	def compare_passwords(self, user, password):
+		pw = password.encode()
 		hashed_pw = user.password.encode()
-		if bcrypt.hashpw(password, hashed_pw) == hashed_pw:
+		if bcrypt.hashpw(pw, hashed_pw) == hashed_pw:
 			return True
 		else:
 			return False
@@ -38,24 +38,24 @@ class UserManager(models.Manager):
 			return (False, errors)
 
 		try:
-			self.get(email=data['email'])
+			match = self.get(email=data['email'])
 			errors.append('Whoops! Email already exists in the database')
 			return(False, errors)
 		except:
 			pw_hash = self.hash_password(data['password'])
-			self.create_user(data['first_name'], data['last_name'], data['email'], pw_hash)
+			user = self.create_user(data['first_name'], data['last_name'], data['email'], pw_hash)
+			return (True, user)
 
-	def login(request, data):
+	def login(self, data):
 		password = data['password']
 		errors = []
 		try:
 			user = self.get(email=data['email'])
 			if self.compare_passwords(user, password):
-				return True
-			else:
-				return (False, errors)
+				return (True, user)
 		except:
 			errors.append("Whoops! Looks like that email doesn't exist in the database")
+
 		return (False, errors)
 
 class User(models.Model):
@@ -67,3 +67,4 @@ class User(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 
 	objects = UserManager()
+

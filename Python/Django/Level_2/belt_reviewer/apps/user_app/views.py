@@ -7,21 +7,25 @@ def index(request):
 	return render(request, 'user_app/index.html')
 
 def login(request):
-	result = User.objects.login(request.POST)
-	if result == True:
+	valid, res = User.objects.login(request.POST)
+	if valid:
 		user = User.objects.get(email = request.POST['email'])
 		request.session['first_name'] = user.first_name
 		return redirect('/success', request.session['first_name'])
 	else:
-		for error in result:
+		for error in res:
 			messages.error(request, error)
 		return redirect('/')
 
 def register(request):
-	User.objects.validate_register(request.POST)
-	user = User.objects.get(email=request.POST['email'])
-	request.session['first_name'] = user.first_name
-	return redirect('/success', request.session['first_name'])
+	valid, res = User.objects.validate_register(request.POST)
+	if valid:
+		request.session['first_name'] = res.first_name
+		return redirect('/success')
+	else:
+		for error in res:
+			messages.error(request, error)
+		return redirect('/')
 
 def success(request):
 	context = {
