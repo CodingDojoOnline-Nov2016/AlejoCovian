@@ -59,6 +59,8 @@ class Book(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 	objects = BookManager()
 
+##objects
+
 class ReviewManager(models.Manager):
 	 def pull_recent_reviews(self):
 	 	reviews=self.all().order_by("-created_at")[:3]
