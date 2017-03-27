@@ -1,0 +1,28 @@
+<script type="text/javascript">
+	
+	function messymath(num){
+		var count = 0
+		var i = 0
+		while (count < num){
+			if (count % 3 == 0){
+				count += 1
+			}
+			if (count % 7 == 0){
+				i = i + count + count
+				count += 1
+			}
+			if (count == num/3){
+				i = -1
+				break
+			}
+			else{
+				i = i + count
+				count += 1
+			}
+		}
+		console.log(i)
+	}
+
+	messymath(8)
+
+</script>
