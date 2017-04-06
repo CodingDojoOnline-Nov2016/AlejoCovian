@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>SUCCESS PAGE</title>
+</head>
+<body>
+	<p>Welcome to the success page, {{request.session.email}}! {{request.session.statement}}</p>
+	<p>Other users' emails:</p>
+	{% for user in users %}
+		{% if user.email != request.session.email %}
+			{{user.email}}
+			<br>
+		{% endif %}
+	{% endfor %}
+	<br>
+	<form action = "{% url 'selftestloginreg:logout' %}" method = 'post'>
+		{% csrf_token %}
+		<input type = 'submit' value = 'Log Out'>
+	</form>
+</body>
+</html>

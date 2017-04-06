@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>LOGIN PAGE</title>
+</head>
+<body>
+	<p>LOG IN:</p>
+	<form action = "{% url 'selftestloginreg:login' %}" method = 'post'>
+		{% csrf_token %}
+		<input type = 'email' name='email' placeholder='email'>
+		<input type = 'password' name='password' placeholder='password'>
+		<input type = 'submit' value = 'Log In'>
+	</form>
+
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+
+	<p>CREATE AN ACCOUNT:</p>
+	<form action = "{% url 'selftestloginreg:register' %}" method = 'post'>
+		{% csrf_token %}
+		<input type = 'email' name='email' placeholder = 'email'><br>
+		<input type = 'password' name='password' placeholder = 'password'><br>
+		<input type = 'password' name='confirm_password' placeholder = 'confirm_password'><br>
+		<input type = 'submit' value = 'Create Account'>
+	</form>
+</body>
+</html>
