@@ -12,19 +12,8 @@ def index(request):
 		return redirect('/secrets')
 
 def login(request):
-	result = User.validation.validatelogin(request.POST['email'], request.POST['password'])
-	if result == 2:
-		messages.error(request, 'email field cannot be blank')
-		return redirect('/')
-	if result == 4:
-		messages.error(request, 'password field cannot be blank')
-		return redirect('/')
-	if result == 6:
-		messages.error(request, 'incorrect password')
-		return redirect('/')
-	if result == 8:
-		messages.error(request, 'email does not exist in database')
-	else:
+	valid, res = User.validation.validatelogin(request.POST)
+	if valid:
 		email = request.POST['email']
 		getbyemail = User.validation.get(email=email)
 		request.session['user'] = {
@@ -34,11 +23,14 @@ def login(request):
 			'email': getbyemail.email
 		}
 		return redirect('/secrets')
-	return redirect('/')
+	else:
+		for error in res:
+			messages.error(request, error)
+		return redirect('/')
 
 def register(request):
-	result = User.validation.validateregister(request.POST['first_name'], request.POST['last_name'], request.POST['email'], request.POST['password'], request.POST['confirm_password'])
-	if result == True:
+	valid, res = User.validation.validateregister(request.POST)
+	if valid:
 		email = request.POST['email']
 		getbyemail = User.validation.get(email=email)
 		request.session['user'] = {
@@ -49,20 +41,8 @@ def register(request):
 		}
 		return redirect('/secrets')
 	else:
-		if result == 2:
-			messages.error(request, 'first name cannot be blank')
-		if result == 4:
-			messages.error(request, 'last name cannot be blank')
-		if result == 6:
-			messages.error(request, 'email cannot be blank')
-		if result == 8:
-			messages.error(request, 'password cannot be blank')
-		if result == 10:
-			messages.error(request, 'passwords must match')
-		if result == 12:
-			messages.error(request, 'invalid email format. example@this.com')
-		if result == 14:
-			messages.error(request, 'email already in database')
+		for error in res:
+			messages.error(request, error)
 		return redirect('/')
 
 def secrets(request):
