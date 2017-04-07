@@ -5,6 +5,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 
 # Create your views here.
+def index(request):
+	return render(request, 'dojo_secrets_app/index.html')
+
 def secrets(request):
 	context = {
 		'users': User.validation.all(),
@@ -46,8 +49,4 @@ def likepopular(request):
 	except ObjectDoesNotExist:
 		Like.objects.create(message=message, user=User.validation.get(id=request.POST['user']))
 	return redirect('/popular')
-
-def logout(request):
-	del request.session['user']
-	return redirect('/')
 

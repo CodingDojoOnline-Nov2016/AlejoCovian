@@ -6,11 +6,14 @@ from ..dojo_users_app.models import User
 # Create your models here.
 class MessageValidate():
 	def validate(self, message, user):
-		if len(message)<=2:
-			return False
+		errors = []
+		if len(message)<1:
+			errors.append('Please include a message in order to post one ;)')
+		if errors:
+			return (False, errors)
 		else:
-			Message.objects.create(message=message, user=user)
-			return True
+			message = Message.objects.create(message=message, user=user)
+			return (True, message)
 
 class Message(models.Model):
 	message = models.TextField(max_length=1000)

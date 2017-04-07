@@ -6,7 +6,7 @@ def index(request):
 	if 'user' not in request.session:
 		return render(request, 'dojo_secrets_app/index.html')
 	else:
-		return redirect('/secrets')
+		return redirect(reverse('dojo_users:secrets'))
 
 def login(request):
 	valid, res = User.validation.validatelogin(request.POST)
@@ -19,7 +19,7 @@ def login(request):
 			'last_name': getbyemail.last_name,
 			'email': getbyemail.email
 		}
-		return redirect('/secrets')
+		return redirect(reverse('dojo_secrets:index'))
 	else:
 		for error in res:
 			messages.error(request, error)
@@ -41,5 +41,9 @@ def register(request):
 		for error in res:
 			messages.error(request, error)
 		return redirect('/')
+		
+def logout(request):
+	del request.session['user']
+	return redirect(reverse('dojo_users:index'))
 
 #####
