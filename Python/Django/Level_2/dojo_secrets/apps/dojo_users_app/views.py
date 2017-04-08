@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import User
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 def index(request):
 	if 'user' not in request.session:
-		return render(request, 'dojo_secrets_app/index.html')
+		return render(request, 'dojo_users_app/index.html')
 	else:
-		return redirect(reverse('dojo_users:secrets'))
+		return redirect(reverse('dojo_secrets:index'))
 
 def login(request):
 	valid, res = User.validation.validatelogin(request.POST)
@@ -36,7 +37,7 @@ def register(request):
 			'last_name': getbyemail.last_name,
 			'email': getbyemail.email
 		}
-		return redirect('/secrets')
+		return redirect(reverse('dojo_secrets:index'))
 	else:
 		for error in res:
 			messages.error(request, error)
