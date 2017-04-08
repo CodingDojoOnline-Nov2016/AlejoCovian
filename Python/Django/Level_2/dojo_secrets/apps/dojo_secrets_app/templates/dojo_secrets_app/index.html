@@ -9,9 +9,9 @@
 	<p id = 'welcomeuser'>Welcome, {{request.session.user.first_name}}.</p>
 	<a href="/logout">Log Out</a>
 	<h2>Secrets</h2>
-	<a href="/popular">Popular Secrets</a>
+	<a href="{% url 'dojo_secrets:popular' %}}">Popular Secrets</a>
 	<p>Post a secret:</p>
-	<form action = '/newsecret' method='post'>
+	<form action = "{% url 'dojo_secrets:newsecret' %}" method='post'>
 		{% csrf_token %}
 		<textarea name = 'message'></textarea>
 		<br>
@@ -26,7 +26,7 @@
 		({{message.messagelikes.count}} likes)
 
 		{% if message.user.id == request.session.user.id %}
-			<a href="/delete/{{message.id}}">DELETE</a>
+			<a href="{% url 'dojo_secrets:delete' message.id %}">DELETE</a>
 			(Posted by you.)
 		{% else %}
 			{% for thing in message.messagelikes.all %}
