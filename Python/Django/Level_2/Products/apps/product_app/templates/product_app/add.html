@@ -5,6 +5,9 @@
 <body>
 	<h1>Create a New Product</h1>
 	<p>Here is where the user will create a new product.</p>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
 	<form action = "{% url 'products:create' %}" method = 'post'>
 		{% csrf_token %}
 		Name:<input type = 'text' name = 'name'>

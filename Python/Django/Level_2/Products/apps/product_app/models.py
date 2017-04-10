@@ -4,17 +4,29 @@ from django.db import models
 
 # Create your models here.
 class ProductValidate(models.Manager):
+
+	def create_product(self, name, description, price):
+		product = self.create(name=name, description=description, price=price)
+		return product
+
 	def validate(self, name, description, price):
+		errors = []
 		if len(name)<=1:
-			return 2
+			errors.append('product needs a name')
 		if len(description)<=1:
-			return 4
+			errors.append('product needs a description')
 		if len(price)<=1:
-			return 6
-		if len(description)>=100:
-			return 8
+			errors.append('product needs a price')
+		if len(description)>100:
+			errors.append('product description needs to have at least 100 characters')
+		if errors:
+			return (False, errors)
 		else:
-			return True
+			product = self.create_product(name, description, price)
+			return (True, product)
+
+	def update(self, data):
+		pass
 
 class Product(models.Model):
 	name = models.CharField(max_length=45)
