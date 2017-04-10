@@ -22,7 +22,7 @@ def edit(request, id):
 	return render(request, 'pets_app/edit.html', context)
 
 def update(request, id):
-	Pet.validation.filter(id=id).update(name=request.POST['name'], description=request.POST['description'], price=request.POST['price'])
+	Pet.validation.edit(request.POST, id)
 	return redirect(reverse('pets:index'))
 
 def new(request):

@@ -22,6 +22,10 @@ class PetValidate(models.Manager):
 			pet = self.create_pet(data['name'], data['description'], data['price'])
 			return (True, pet)
 
+	def edit(self, data, id):
+		self.filter(id=id).update(name=data['name'], description=data['description'], price=data['price'])
+
+
 class Pet(models.Model):
 	name = models.CharField(max_length=45)
 	description = models.CharField(max_length=200)
