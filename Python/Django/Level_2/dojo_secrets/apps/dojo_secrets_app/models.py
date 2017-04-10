@@ -32,10 +32,31 @@ class Message(models.Model):
 
 #####
 
+class LikeValidate(models.Manager):
+	def create_like(self, user, message_id):
+		message = Message.objects.get(id = message_id)
+		self.create(user=user, message=message)
+		print 'yoyoyo'*8
+
+	def validate_like(self, user_id, message_id):
+		thing1 = int(message_id)
+		message = Message.objects.get(id=thing1)
+		thing = int(user_id)
+		user = User.validation.get(id=thing)
+		try:
+			self.get(user=user, message=message)
+			print 'hihihi'*8
+			return False
+		except:
+			self.create_like(user, message_id)
+			return True
+
 class Like(models.Model):
 	user = models.ForeignKey(User)
 	message = models.ForeignKey(Message, related_name='messagelikes')
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
+	validation = LikeValidate()
 
 

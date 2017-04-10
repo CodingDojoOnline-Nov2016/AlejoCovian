@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Message, Like
 from django.db.models import Count
-from django.contrib import messages
 from django.core.urlresolvers import reverse
 
 # Create your views here.
@@ -22,4 +21,10 @@ def popular(request):
 
 def delete(request, message_id):
 	valid = Message.validation.destroy_secret(message_id)
+	return redirect(reverse('dojo_secrets:index'))
+
+def like(request, message_id):
+	thing = request.session['user']
+	user_id = thing['id']
+	Like.validation.validate_like(user_id, message_id)
 	return redirect(reverse('dojo_secrets:index'))
