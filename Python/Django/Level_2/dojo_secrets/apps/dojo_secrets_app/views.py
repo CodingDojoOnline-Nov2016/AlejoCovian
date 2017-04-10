@@ -17,7 +17,10 @@ def newsecret(request):
 	return redirect(reverse('dojo_secrets:index'))
 
 def popular(request):
-	return render(request, 'dojo_secrets_app/popular.html')
+	context = {
+		'messages': Message.objects.annotate(thing=Count('messagelikes')).order_by('-thing')
+	}
+	return render(request, 'dojo_secrets_app/popular.html', context)
 
 def delete(request, message_id):
 	valid = Message.validation.destroy_secret(message_id)
@@ -27,4 +30,4 @@ def like(request, message_id):
 	thing = request.session['user']
 	user_id = thing['id']
 	Like.validation.validate_like(user_id, message_id)
-	return redirect(reverse('dojo_secrets:index'))
+	return redirect(request.META.get('HTTP_REFERER'))

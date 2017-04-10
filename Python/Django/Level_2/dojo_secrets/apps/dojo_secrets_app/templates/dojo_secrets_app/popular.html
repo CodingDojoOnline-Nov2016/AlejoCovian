@@ -26,7 +26,7 @@
 
 				{% if request.session.user.id not in message.messagelikes.all %}
 
-					<form action = '/likepopular' method='post'>
+					<form action = "{% url 'dojo_secrets:like' message.id %}" method='post'>
 						{% csrf_token %}
 						<input type = 'submit' value = 'LIKE'> 
 						<input type = 'hidden' name = 'message' value = '{{message.id}}'>
