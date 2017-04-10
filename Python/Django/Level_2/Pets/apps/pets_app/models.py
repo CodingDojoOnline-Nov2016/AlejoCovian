@@ -23,7 +23,14 @@ class PetValidate(models.Manager):
 			return (True, pet)
 
 	def edit(self, data, id):
-		self.filter(id=id).update(name=data['name'], description=data['description'], price=data['price'])
+		thing = self.filter(id=id)
+		if data['name']:
+			thing.update(name=data['name'])
+		if data['description']:
+			thing.update(description=data['description'])
+		if data['price']:
+			thing.update(price=data['price'])
+		return True
 
 
 class Pet(models.Model):
