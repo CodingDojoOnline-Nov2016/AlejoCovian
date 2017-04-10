@@ -25,8 +25,15 @@ class ProductValidate(models.Manager):
 			product = self.create_product(name, description, price)
 			return (True, product)
 
-	def update(self, data):
-		pass
+	def update_product(self, data, id):
+		thing = self.filter(id=id)
+		if data['name']:
+			thing.update(name = data['name'])
+		if data['description']:
+			thing.update(description = data['description'])
+		if data['price']:
+			thing.update(price = data['price'])
+		return True
 
 class Product(models.Model):
 	name = models.CharField(max_length=45)
