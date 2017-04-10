@@ -5,6 +5,9 @@
 <body>
 	<h2>Create a New Pet:</h2>
 	<p>This is where one creates a new pet.</p>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
 	<form action = "{% url 'pets:create' %}" method='post'>
 		{% csrf_token %}
 		Pet Name:<input type = 'text' name = 'name'>

@@ -4,15 +4,23 @@ from django.db import models
 
 # Create your models here.
 class PetValidate(models.Manager):
-	def validate(self, name, description, price):
-		if len(name)<=0:
-			return 2
-		if len(description)<=0:
-			return 4
-		if len(price)<=0:
-			return 6
+	def create_pet(self, name, description, price):
+		pet = self.create(name=name, description=description, price=price)
+		return True
+
+	def validate(self, data):
+		errors = []
+		if len(data['name'])<=0:
+			errors.append('This pet needs a name')
+		if len(data['description'])<=0:
+			errors.append('This pet needs a description')
+		if len(data['price'])<=0:
+			errors.append('This pet needs a price tag')
+		if errors:
+			return (False, errors)
 		else:
-			return True
+			pet = self.create_pet(data['name'], data['description'], data['price'])
+			return (True, pet)
 
 class Pet(models.Model):
 	name = models.CharField(max_length=45)
