@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>WELCOME</title>
+</head>
+<body>
+	<p>welcome, {{request.session.first_name}}</p>
+
+	<a href="{% url 'bookreview_app:new' %}">Add a review</a>
+	{% for user in users %}
+		{{user.first_name}}
+		<br>
+	{% empty %}
+		<p>Looks like no users.</p>
+	{% endfor %}
+
+	<form action = '/logout' method='post'>
+		{% csrf_token %}
+		<input type = 'submit' value='logout'>
+	</form>
+</body>
+</html>

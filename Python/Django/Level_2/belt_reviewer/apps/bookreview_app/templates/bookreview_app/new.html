@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>ADD REVIEW</title>
+</head>
+<body>
+	Add a Review:
+	<form method='post'>
+		{% csrf_token %}
+		<select name="book_select">
+			<option value = "book">Book</option>
+		</select>
+		Or, add a new book: <input type = 'text' placeholder='book'>
+		<br>
+		<select name="author_select">
+			<option value = "author">Author</option>
+		</select>
+		Or, add a new author: <input type = 'text' placeholder='author'>
+		<br>
+		<textarea placeholder='description'></textarea>
+		<br>
+		<input type = 'number' placeholder='Rating' min='0' max='5' value='0'>
+		<input type = 'submit' value='Submit'>
+	</form>
+	<a href="{% url 'bookreview_app:index' %}">Home</a>
+</body>
+</html>

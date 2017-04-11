@@ -1,9 +1,9 @@
 <html>
 <head>
-	<title>WELCOME</title>
+	<title>LOG IN OR REGISTER</title>
 </head>
 <body>
-	<form action = '/login' method='post'>
+	<form action = "{% url 'user_app:login' %}" method='post'>
 		{% csrf_token %}
 		<input type = 'email' name='email' placeholder='this@example.net'>
 		<input type = 'password' name='password' placeholder='password'>
@@ -12,7 +12,7 @@
 		{% for message in messages %}
 			{{message}}
 		{% endfor %}
-	<form action = '/register' method='post'>
+	<form action = "{% url 'user_app:register' %}" method='post'>
 		{% csrf_token %}
 		<input type = 'text' name='first_name' placeholder='First Name'><br>
 		<input type = 'text' name='last_name' placeholder='Last Name'><br>

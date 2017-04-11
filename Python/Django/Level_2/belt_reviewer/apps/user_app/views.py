@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 def index(request):
@@ -11,17 +12,18 @@ def login(request):
 	if valid:
 		user = User.objects.get(email = request.POST['email'])
 		request.session['first_name'] = user.first_name
-		return redirect('/success', request.session['first_name'])
+		return redirect(reverse('bookreview_app:index'), request.session['first_name'])
 	else:
+		print 'yip'*8
 		for error in res:
 			messages.error(request, error)
-		return redirect('/')
+		return redirect(reverse('user_app:index'))
 
 def register(request):
 	valid, res = User.objects.validate_register(request.POST)
 	if valid:
 		request.session['first_name'] = res.first_name
-		return redirect('/success')
+		return redirect(reverse('bookreview_app:index'))
 	else:
 		for error in res:
 			messages.error(request, error)
@@ -36,3 +38,4 @@ def success(request):
 def logout(request):
 	request.session.clear()
 	return redirect('/')
+
