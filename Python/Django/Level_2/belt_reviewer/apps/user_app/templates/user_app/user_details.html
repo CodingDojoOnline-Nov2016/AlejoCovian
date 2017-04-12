@@ -1,0 +1,15 @@
+<html>
+<head>
+	<title>User Details</title>
+</head>
+<body>
+	<h3>User Profile: {{user.first_name}} {{user.last_name}}</h3>
+	{% for review in reviews %}
+		{{review.review}}
+		<br>
+	{% endfor %}
+	<a href="{% url 'bookreview_app:index' %}">Home</a>
+	<br>
+	<a href="{% url 'user_app:logout' %}">logout</a>
+</body>
+</html>

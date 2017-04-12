@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from ..bookreview_app.models import Review
 
 # Create your views here.
 def index(request):
@@ -31,11 +32,12 @@ def register(request):
 			messages.error(request, error)
 		return redirect('/')
 
-def success(request):
+def details(request, id):
 	context = {
-		'users': User.objects.all()
+		'user' : User.objects.get(id=id),
+		'reviews': Review.objects.filter(user=User.objects.get(id=id))
 	}
-	return render(request, 'user_app/success.html', context)
+	return render(request, 'user_app/user_details.html', context)
 
 def logout(request):
 	request.session.clear()
