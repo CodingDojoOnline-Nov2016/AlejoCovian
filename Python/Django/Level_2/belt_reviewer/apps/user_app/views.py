@@ -12,6 +12,7 @@ def login(request):
 	if valid:
 		user = User.objects.get(email = request.POST['email'])
 		request.session['first_name'] = user.first_name
+		request.session['id'] = user.id
 		return redirect(reverse('bookreview_app:index'), request.session['first_name'])
 	else:
 		print 'yip'*8
@@ -23,6 +24,7 @@ def register(request):
 	valid, res = User.objects.validate_register(request.POST)
 	if valid:
 		request.session['first_name'] = res.first_name
+		request.session['id'] = res.id
 		return redirect(reverse('bookreview_app:index'))
 	else:
 		for error in res:

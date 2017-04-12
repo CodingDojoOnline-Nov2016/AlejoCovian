@@ -4,21 +4,26 @@
 </head>
 <body>
 	Add a Review:
-	<form method='post'>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+	<form action="{% url 'bookreview_app:create' %}" method='post'>
 		{% csrf_token %}
-		<select name="book_select">
-			<option value = "book">Book</option>
-		</select>
-		Or, add a new book: <input type = 'text' placeholder='book'>
+		Add a new book: <input type = 'text' name='add_book'>
 		<br>
 		<select name="author_select">
-			<option value = "author">Author</option>
+			{% for author in authors %}
+				<option value = '{{author.author}}'>{{author.author}}</option>
+			{% empty %}
+				<option>Looks like no authors yet!</option>
+			{% endfor %}
 		</select>
-		Or, add a new author: <input type = 'text' placeholder='author'>
+		Or, add a new author: <input type = 'text' name ='add_author' placeholder='author'>
 		<br>
-		<textarea placeholder='description'></textarea>
+		<textarea name='review' placeholder='review'></textarea>
 		<br>
-		<input type = 'number' placeholder='Rating' min='0' max='5' value='0'>
+		<input type = 'number' name='rating' placeholder='Rating' min='0' max='5' value='0'>
+		<input type = 'hidden' name='user_id' value = '{{request.session.id}}'>
 		<input type = 'submit' value='Submit'>
 	</form>
 	<a href="{% url 'bookreview_app:index' %}">Home</a>

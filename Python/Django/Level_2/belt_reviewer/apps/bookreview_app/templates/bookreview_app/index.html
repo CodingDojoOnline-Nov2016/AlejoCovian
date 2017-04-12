@@ -6,14 +6,19 @@
 	<p>welcome, {{request.session.first_name}}</p>
 
 	<a href="{% url 'bookreview_app:new' %}">Add a review</a>
-	{% for user in users %}
-		{{user.first_name}}
+	{% for review in reviews %}
+		<br>
+		{{review.user.first_name}}
+		{{review.book.title}}
+		{{review.book.author}}
+		{{review.review}}
+		{{review.rating}}
 		<br>
 	{% empty %}
-		<p>Looks like no users.</p>
+		<p>Looks like no reviews yet.</p>
 	{% endfor %}
 
-	<form action = '/logout' method='post'>
+	<form action = "{% url 'user_app:logout' %}" method='post'>
 		{% csrf_token %}
 		<input type = 'submit' value='logout'>
 	</form>
