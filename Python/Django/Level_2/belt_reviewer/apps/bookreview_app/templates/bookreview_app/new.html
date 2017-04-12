@@ -9,15 +9,15 @@
 	{% endfor %}
 	<form action="{% url 'bookreview_app:create' %}" method='post'>
 		{% csrf_token %}
-		Select a book: <select name='select_book'>
-		<option value = "" disabled selected>Choose Book</option>
-		{% for book in books %}
-			<option value="{{book.title}}">{{book.title}}</option>
-		{% endfor %}
-	</select>
-		Or, add a new book: <input type = 'text' name='add_book' placeholder = 'book name'>
+		Add a book: <input type = 'text' name ='add_book'>
 		<br>
-		Add a new author: <input type = 'text' name ='add_author' placeholder='author'>
+		Select an author: <select name='select_author'>
+			<option value = "" disabled selected>Choose Author</option>
+			{% for book in books %}
+				<option value="{{book.author}}">{{book.author}}</option>
+			{% endfor %}
+	</select>
+		Or, add a new author: <input type = 'text' name='add_author' placeholder = 'author name'>
 		<br>
 		<textarea name='review' placeholder='review'></textarea>
 		<br>

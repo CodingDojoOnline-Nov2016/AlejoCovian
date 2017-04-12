@@ -29,23 +29,22 @@ class ReviewManager(models.Manager):
 
 	def validate_and_add(self, data, user_id):
 		errors = []
+		if len(data['add_book'])<1:
+			errors.append('please add a book')
 		if len(data['review'])<1:
 			errors.append('please write a review')
 		if not data['rating']:
 			errors.append('please give this book review a rating')
-		if not data['add_author']:
-			errors.append('please add an author')
-		if data['add_book']:
-			title = data['add_book']
-		elif data['select_book']:
-			title = data['select_book']
+		if data['add_author']:
+			author = data['add_author']
+		elif data['select_author']:
+			author = data['select_author']
 		if errors:
 			return (False, errors)
 		else:
-			thing1 = data['add_author']
 			thing = int(user_id)
 			user = User.objects.get(id = thing)
-			author = thing1
+			title = data['add_book']
 			book = Book.objects.create_book(title, author)
 			review = self.create_review(data['review'], data['rating'], book, user)
 			print review

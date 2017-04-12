@@ -6,7 +6,7 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
 	context = {
-		'reviews' : Review.objects.all(),
+		'reviews' : Review.objects.all().order_by('-updated_at'),
 	}
 	return render(request, 'bookreview_app/index.html', context)
 
