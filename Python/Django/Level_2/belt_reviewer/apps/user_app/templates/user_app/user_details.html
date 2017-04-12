@@ -3,11 +3,19 @@
 	<title>User Details</title>
 </head>
 <body>
-	<h3>User Profile: {{user.first_name}} {{user.last_name}}</h3>
+	<h3>User Profile: {{user.first_name}}</h3>
+	Name: {{user.first_name}} {{user.last_name}}
+	<br>
+	Email: {{user.email}}
+	<br>
+	Reviews:
 	{% for review in reviews %}
-		{{review.review}}
+		{{review.book.title}}
 		<br>
 	{% endfor %}
+	Total Reviews:
+		{{reviews.count}}
+	<br>
 	<a href="{% url 'bookreview_app:index' %}">Home</a>
 	<br>
 	<a href="{% url 'user_app:logout' %}">logout</a>

@@ -9,7 +9,7 @@
 	{% for review in reviews %}
 		<br>
 		POSTED BY:
-		<a href="{% url 'user_app:details' id=request.session.id %}">{{review.user.first_name}}</a>
+		<a href="{% url 'user_app:details' id=review.user.id %}">{{review.user.first_name}}</a>
 		BOOK TITLE:{{review.book.title}}
 		AUTHOR:{{review.book.author}}
 		REVIEW:{{review.review}}
