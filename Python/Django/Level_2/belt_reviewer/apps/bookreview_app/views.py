@@ -13,7 +13,10 @@ def index(request):
 def new(request):
 	print Review.objects.all()
 	print Book.objects.all()
-	return render(request, 'bookreview_app/new.html')
+	context = {
+		'books' : Book.objects.all(),
+	}
+	return render(request, 'bookreview_app/new.html', context)
 
 def create(request):
 	user_id = request.POST['user_id']

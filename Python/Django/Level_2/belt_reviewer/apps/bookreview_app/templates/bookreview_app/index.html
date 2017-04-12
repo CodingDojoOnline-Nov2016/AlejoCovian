@@ -8,11 +8,11 @@
 	<a href="{% url 'bookreview_app:new' %}">Add a review</a>
 	{% for review in reviews %}
 		<br>
-		{{review.user.first_name}}
-		{{review.book.title}}
-		{{review.book.author}}
-		{{review.review}}
-		{{review.rating}}
+		POSTED BY:{{review.user.first_name}}
+		BOOK TITLE:{{review.book.title}}
+		AUTHOR:{{review.book.author}}
+		REVIEW:{{review.review}}
+		RATING:{{review.rating}}/5
 		<br>
 	{% empty %}
 		<p>Looks like no reviews yet.</p>
