@@ -10,7 +10,8 @@ class UserManager(models.Manager):
 		return (True, user)
 
 	def hash_password(self, password):
-		return (True, password)
+		pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+		return (True, pw_hash)
 
 	def validate_and_add(self, data):
 		errors = []

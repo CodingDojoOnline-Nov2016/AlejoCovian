@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Register | DashBoard</title>
+</head>
+<body>
+	<p>REGISTER:</p>
+	<form>
+		{% csrf_token %}
+		<input type = 'email' name = 'email' placeholder = 'Email Address'><br>
+		<input type = 'text' name = 'first_name' placeholder = 'First Name'><br>
+		<input type = 'text' name = 'last_name' placeholder = 'Last Name'><br>
+		<input type = 'password' name = 'password' placeholder = 'Password'><br>
+		<input type = 'password' name = 'confirm_password' placeholder = 'Confirm Password'><br>
+		<input type = 'submit' value = 'Register'>
+	</form>
+
+	<p>Already have an account? <a href="">Click Here to Login</a>. </p>
+</body>
+</html>
