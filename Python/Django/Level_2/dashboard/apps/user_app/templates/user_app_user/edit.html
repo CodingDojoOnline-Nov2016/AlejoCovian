@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Edit Profile | DashBoard</title>
+</head>
+<body>
+	<h3>Edit Profile</h3>
+	<p>Edit Information</p>
+	<form>
+		{% csrf_token %}
+		<input type = 'email' name = 'email' placeholder = 'Change Email'><br>
+		<input type = 'text' name = 'first_name' placeholder = 'Change First Name'><br>
+		<input type = 'text' name = 'last_name' placeholder = 'Change Last Name'><br>
+		<input type = 'submit' value = 'Save'>
+	</form>
+
+	<p>Change Password</p>
+	<form>
+		{% csrf_token %}
+		<input type = 'password' name = 'password' placeholder = 'New Password'><br>
+		<input type = 'password' name = 'confirm_password' placeholder = 'Confirm New Password'><br>
+		<input type = 'submit' value = 'Update Password'>
+	</form>
+
+	<p>Edit Description</p>
+	<form>
+		{% csrf_token %}
+		<textarea name = 'description'></textarea>
+		<input type = 'submit' value = 'Save'>
+	</form>
+</body>
+</html>
+

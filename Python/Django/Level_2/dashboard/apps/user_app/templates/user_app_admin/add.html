@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title>New User</title>
+</head>
+<body>
+	<a href="">Return to Dashboard</a>
+	<h3>Add a New User</h3>
+	<form>
+		{% csrf_token %}
+		<input type = 'email' name = 'email' placeholder = 'Email Address'><br>
+		<input type = 'text' name = 'first_name' placeholder = 'First Name'><br>
+		<input type = 'text' name = 'last_name' placeholder = 'Last Name'><br>
+		<input type = 'password' name = 'password' placeholder = 'Password'><br>
+		<input type = 'password' name = 'confirm_password' placeholder = 'Confirm Password'><br>
+		<input type = 'submtit' value = 'Create'>
+	</form>
+</body>
+</html>

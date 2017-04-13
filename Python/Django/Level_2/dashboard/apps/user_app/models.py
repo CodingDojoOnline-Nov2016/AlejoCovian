@@ -6,7 +6,7 @@ from django.db import models
 class UserManager(models.Manager):
 
 	def create_user(self, email, first_name, last_name, user_level):
-		user = self.create(email=email, first_name=first_name, last_name=last_name, password=password user_level=user_level)
+		user = self.create(email=email, first_name=first_name, last_name=last_name, password=password, description=description, user_level=user_level)
 		return (True, user)
 
 	def hash_password(self, password):
@@ -27,7 +27,7 @@ class UserManager(models.Manager):
 			return (False, errors)
 		else:
 			password = self.hash_password(data['password'])
-			user = self.create_user(data['email'], data['first_name'], data['last_name'], password, data['user_level'])
+			user = self.create_user(data['email'], data['first_name'], data['last_name'], password, data['description'], data['user_level'])
 			return (True, user)
 
 
@@ -36,6 +36,7 @@ class User(models.Model):
 	first_name = models.CharField(max_length=45)
 	last_name = models.CharField(max_length=45)
 	password = models.CharField(max_length=255)
+	description = models.CharField(max_length=4000)
 	user_level = models.SmallIntegerField()
 
 	created_at = models.DateTimeField(auto_now_add=True)
