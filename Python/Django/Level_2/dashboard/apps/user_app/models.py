@@ -13,6 +13,9 @@ class UserManager(models.Manager):
 		pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 		return (True, pw_hash)
 
+	def compare_passwords(self, password):
+		pass
+
 	def validate_and_add(self, data):
 		errors = []
 		if len(data['email'])<1:
@@ -29,6 +32,9 @@ class UserManager(models.Manager):
 			password = self.hash_password(data['password'])
 			user = self.create_user(data['email'], data['first_name'], data['last_name'], password, data['description'], data['user_level'])
 			return (True, user)
+
+	def login(self, email, password):
+		return (True, user)
 
 
 class User(models.Model):
