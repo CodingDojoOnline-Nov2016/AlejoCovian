@@ -5,8 +5,8 @@ from django.db import models
 # Create your models here.
 class UserManager(models.Manager):
 
-	def create_user(self, email, first_name, last_name, user_level):
-		user = self.create(email=email, first_name=first_name, last_name=last_name, password=password, description=description, user_level=user_level)
+	def create_user(self, email, first_name, last_name):
+		user = self.create(email=email, first_name=first_name, last_name=last_name, password=password, description=description, user_level=self.id)
 		return (True, user)
 
 	def hash_password(self, password):
@@ -30,7 +30,7 @@ class UserManager(models.Manager):
 			return (False, errors)
 		else:
 			password = self.hash_password(data['password'])
-			user = self.create_user(data['email'], data['first_name'], data['last_name'], password, data['description'], data['user_level'])
+			user = self.create_user(data['email'], data['first_name'], data['last_name'], password, data['description'])
 			return (True, user)
 
 	def login(self, email, password):

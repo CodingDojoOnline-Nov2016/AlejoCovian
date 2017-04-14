@@ -4,7 +4,7 @@
 </head>
 <body>
 	<p>REGISTER:</p>
-	<form>
+	<form action = "{% url 'user_app:register' %}" method='post'>
 		{% csrf_token %}
 		<input type = 'email' name = 'email' placeholder = 'Email Address'><br>
 		<input type = 'text' name = 'first_name' placeholder = 'First Name'><br>

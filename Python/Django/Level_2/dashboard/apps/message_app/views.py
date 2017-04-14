@@ -1,5 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.urlresolvers import reverse
+from ..user_app.models import User
 
 # Create your views here.
 def index(request):
-	return render(request, 'message_app/dashboard.html')
+	context = {
+		'users': User.objects.all()
+	}
+	return render(request, 'message_app_user/dashboard.html', context)
+
+def logout(request):
+	return redirect(reverse('user_app:index'))
