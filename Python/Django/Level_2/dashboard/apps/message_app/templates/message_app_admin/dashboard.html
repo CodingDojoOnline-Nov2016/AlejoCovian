@@ -3,7 +3,11 @@
 	<title>The DashBoard | DashBoard</title>
 </head>
 <body>
-	<h3>Welcome to the DashBoard</h3>
+	<a href="{% url 'user_app:logout' %}">logout</a>
+	<h3>Welcome to the DashBoard, Admin</h3>
 	<h4>All Users:</h4>
+	{% for user in users %}
+		{{user}}
+	{% endfor %}
 </body>
 </html>

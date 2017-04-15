@@ -3,8 +3,12 @@
 	<title>The DashBoard | DashBoard</title>
 </head>
 <body>
-	<a href="{% url 'message_app:logout' %}">logout</a>
-	<h3>Welcome to the DashBoard</h3>
+	<a href="{% url 'user_app:logout' %}">logout</a>
+	<h3>Welcome to the DashBoard, {{user.first_name}}</h3>
 	<h4>All Users:</h4>
+	{% for user in users %}
+		{{user.first_name}} {{user.last_name}} ~ {{user.description}}
+		<br>
+	{% endfor %}
 </body>
 </html>

@@ -8,6 +8,3 @@ def index(request):
 		'users': User.objects.all()
 	}
 	return render(request, 'message_app_user/dashboard.html', context)
-
-def logout(request):
-	return redirect(reverse('user_app:index'))
