@@ -31,10 +31,7 @@ def register(request):
 	errors = []
 	valid, res = User.objects.validate_and_add(request.POST)
 	if valid:
-		if int(user.id) == 1:
-			return redirect(reverse('message_app:indexadmin'), request.session['first_name'])
-		else:
-			return redirect(reverse('message_app:index'))
+		return redirect(reverse('message_app:index'))
 	else:
 		for error in res:
 			messages.error(request, error)
@@ -46,10 +43,8 @@ def logout(request):
 
 #####
 
-def userinfouser(request):
+def userinfo(request):
 	return render(request, 'user_app_user/user.html')
 
-def userinfoadmin(request):
-	return render(request, 'user_app_admin/user.html')
 
 
