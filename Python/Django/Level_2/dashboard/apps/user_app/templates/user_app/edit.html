@@ -1,11 +1,14 @@
 <html>
 <head>
-	<title>Edit Profile | DashBoard</title>
+	<title>{{user.first_name}} {{user.last_name}} - Edit Profile | DashBoard</title>
 </head>
 <body>
+	<a href="{% url 'user_app:dashboard' %}">Home</a>
+	<h4>{{user.first_name}} {{user.last_name}}</h4>
+	<a href="{% url 'user_app:logout' %}">Log Out</a>
 	<h3>Edit Profile</h3>
 	<p>Edit Information</p>
-	<form>
+	<form action = "{% url 'user_app:update_information' id=user.id %}" method='post'>
 		{% csrf_token %}
 		<input type = 'email' name = 'email' placeholder = 'Change Email'><br>
 		<input type = 'text' name = 'first_name' placeholder = 'Change First Name'><br>
@@ -14,7 +17,7 @@
 	</form>
 
 	<p>Change Password</p>
-	<form>
+	<form action = "{% url 'user_app:update_password' id=user.id %}" method='post'>
 		{% csrf_token %}
 		<input type = 'password' name = 'password' placeholder = 'New Password'><br>
 		<input type = 'password' name = 'confirm_password' placeholder = 'Confirm New Password'><br>
@@ -22,9 +25,9 @@
 	</form>
 
 	<p>Edit Description</p>
-	<form>
+	<form action = "{% url 'user_app:update_description' id=user.id %}" method="post">
 		{% csrf_token %}
-		<textarea name = 'description'></textarea>
+		<textarea placeholder='{{user.description}}' name = 'description'></textarea><br>
 		<input type = 'submit' value = 'Save'>
 	</form>
 </body>

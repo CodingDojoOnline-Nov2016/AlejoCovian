@@ -59,6 +59,18 @@ def edit(request, id):
 	}
 	return render(request, 'user_app/edit.html', context)
 
+def update_information(request, id):
+	User.objects.update_information(request.POST, id)
+	return redirect(reverse('user_app:userinfo', kwargs={'id':id}))
+
+def update_password(request, id):
+	User.objects.update_password(request.POST, id)
+	return redirect(reverse('user_app:userinfo', kwargs={'id':id}))
+
+def update_description(request, id):
+	User.objects.update_description(request.POST['description'], id)
+	return redirect(reverse('user_app:userinfo', kwargs={'id':id}))
+
 def userinfo(request, id):
 	context = {
 		'user': User.objects.get(id=id)

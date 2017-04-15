@@ -56,6 +56,30 @@ class UserManager(models.Manager):
 			errors.append('It appears as though this email does not yet exist in the database.')
 		return (False, errors)
 
+	def update_information(self, data, id):
+		user = self.filter(id=id)
+		if data['email']:
+			user.update(email=data['email'])
+		if data['first_name']:
+			user.update(first_name=data['first_name'])
+		if data['last_name']:
+			user.update(last_name=data['last_name'])
+		return True
+
+	def update_password(self, data, id):
+		errors=[]
+		if data['password'] != data['confirm_password']:
+			errors.append('password must match password confirmation')
+			return (False, errors)
+		else:
+			hashed = self.hash_password(data['password'])
+			self.update(password=hashed)
+			return True
+
+	def update_description(self, description, id):
+		user = self.filter(id=id)
+		user.update(description=description)
+		return True
 
 class User(models.Model):
 	email = models.CharField(max_length=255)
