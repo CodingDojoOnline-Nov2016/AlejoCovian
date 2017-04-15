@@ -44,3 +44,12 @@ def logout(request):
 	request.session.clear()
 	return redirect(reverse('user_app:index'))
 
+#####
+
+def userinfouser(request):
+	return render(request, 'user_app_user/user.html')
+
+def userinfoadmin(request):
+	return render(request, 'user_app_admin/user.html')
+
+
