@@ -31,7 +31,10 @@ def register(request):
 	errors = []
 	valid, res = User.objects.validate_and_add(request.POST)
 	if valid:
-		return redirect(reverse('message_app:index'))
+		if int(user.id) == 1:
+			return redirect(reverse('message_app:indexadmin'), request.session['first_name'])
+		else:
+			return redirect(reverse('message_app:index'))
 	else:
 		for error in res:
 			messages.error(request, error)
