@@ -3,13 +3,17 @@
 	<title>User | DashBoard</title>
 </head>
 <body>
-	<h3>User Name</h3>
-	<p>Registered at:</p>
-	<p>User ID:</p>
-	<p>Email address:</p>
-	<p>Description:</p>
+	<a href="{% url 'user_app:dashboard' %}">Home</a>
+	<h3>{{user.first_name}} {{user.last_name}}</h3>
+	<p>Registered at: {{user.created_at}}</p>
+	<p>User ID: {{user.id}}</p>
+	<p>Email address: {{user.email}}</p>
+	<p>Description: {{user.description}}</p>
+	{% if user.id == request.session.id %}
+		<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
+	{% endif %}
 
-	<h4>Leave a message for User</h4>
+	<h4>Leave a message for {{user.first_name}}</h4>
 	<form>
 		{% csrf_token %}
 		<textarea></textarea>

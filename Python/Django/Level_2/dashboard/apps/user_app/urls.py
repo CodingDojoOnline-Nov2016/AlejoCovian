@@ -11,6 +11,7 @@ urlpatterns = [
 	url(r'^register$', views.register, name='register'),
 	url(r'^logout$', views.logout, name='logout'),
 	###
-	url(r'^userinfo$', views.userinfo, name='userinfo'),
+	url(r'^userinfo/(?P<id>\d+)$', views.userinfo, name='userinfo'),
 	url(r'^dashboard$', views.dashboard, name='dashboard'),
+	url(r'^edit/(?P<id>\d+)$', views.edit, name='edit'),
 ]

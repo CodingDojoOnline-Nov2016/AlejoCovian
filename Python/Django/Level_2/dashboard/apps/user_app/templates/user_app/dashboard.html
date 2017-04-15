@@ -7,7 +7,10 @@
 	<a href="{% url 'user_app:logout' %}">Log Out</a>
 	<h3>List of All Users:</h3>
 	{% for user in users %}
-		{{user.first_name}} {{user.last_name}} ~ {{user.description}}
+		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ {{user.description}}
+		{% if user.id == request.session.id %}
+			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
+		{% endif %}
 		<br>
 	{% endfor %}
 </body>

@@ -18,7 +18,8 @@ def login(request):
 	if valid:
 		user = User.objects.get(email = request.POST['email'])
 		request.session['first_name'] = user.first_name
-		return redirect(reverse('user_app:dashboard'), request.session['first_name'])
+		request.session['id'] = user.id
+		return redirect(reverse('user_app:dashboard'))
 	else:
 		for error in res:
 			messages.error(request, error)
@@ -31,6 +32,9 @@ def register(request):
 	errors = []
 	valid, res = User.objects.validate_and_add(request.POST)
 	if valid:
+		user = User.objects.get(email = request.POST['email'])
+		request.session['first_name'] = user.first_name
+		request.session['id'] = user.id
 		return redirect(reverse('user_app:dashboard'))
 	else:
 		for error in res:
@@ -49,8 +53,17 @@ def dashboard(request):
 	}
 	return render(request, 'user_app/dashboard.html', context)
 
-def userinfo(request):
-	return render(request, 'user_app/user.html')
+def edit(request, id):
+	context = {
+		'user': User.objects.get(id=id)
+	}
+	return render(request, 'user_app/edit.html', context)
+
+def userinfo(request, id):
+	context = {
+		'user': User.objects.get(id=id)
+	}
+	return render(request, 'user_app/user.html', context)
 
 
 
