@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>The DashBoard | DashBoard</title>
+</head>
+<body>
+	<h3>Welcome, {{request.session.first_name}}</h3>
+	<a href="{% url 'user_app:logout' %}">Log Out</a>
+	<h3>List of All Users:</h3>
+	{% for user in users %}
+		{{user.first_name}} {{user.last_name}} ~ {{user.description}}
+		<br>
+	{% endfor %}
+</body>
+</html>

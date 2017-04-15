@@ -17,5 +17,4 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('apps.user_app.urls', namespace='user_app')),
-    url(r'^admin/', include('apps.admin_app.urls', namespace='admin_app')),
 ]

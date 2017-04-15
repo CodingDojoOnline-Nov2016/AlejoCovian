@@ -5,33 +5,33 @@ from .models import User
 
 # Create your views here.
 def index(request):
-	return render(request, 'user_app_user/welcome.html')
+	if 'first_name' in request.session:
+		return redirect(reverse('user_app:dashboard'))
+	else:
+		return render(request, 'user_app/welcome.html')
 
 def loginpage(request):
-	return render(request, 'user_app_user/login.html')
+	return render(request, 'user_app/login.html')
 
 def login(request):
 	valid, res = User.objects.login(request.POST)
 	if valid:
 		user = User.objects.get(email = request.POST['email'])
 		request.session['first_name'] = user.first_name
-		if int(user.id) == 1:
-			return redirect(reverse('message_app:indexadmin'), request.session['first_name'])
-		else:
-			return redirect(reverse('message_app:index'), request.session['first_name'])
+		return redirect(reverse('user_app:dashboard'), request.session['first_name'])
 	else:
 		for error in res:
 			messages.error(request, error)
 	return redirect(reverse('user_app:loginpage'))
 
 def registration(request):
-	return render(request, 'user_app_user/register.html')
+	return render(request, 'user_app/register.html')
 
 def register(request):
 	errors = []
 	valid, res = User.objects.validate_and_add(request.POST)
 	if valid:
-		return redirect(reverse('message_app:index'))
+		return redirect(reverse('user_app:dashboard'))
 	else:
 		for error in res:
 			messages.error(request, error)
@@ -43,8 +43,14 @@ def logout(request):
 
 #####
 
+def dashboard(request):
+	context = {
+		'users': User.objects.all()
+	}
+	return render(request, 'user_app/dashboard.html', context)
+
 def userinfo(request):
-	return render(request, 'user_app_user/user.html')
+	return render(request, 'user_app/user.html')
 
 
 
