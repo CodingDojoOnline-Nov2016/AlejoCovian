@@ -8,3 +8,9 @@ def index(request):
 		'users': User.objects.all()
 	}
 	return render(request, 'message_app_user/dashboard.html', context)
+
+def indexadmin(request):
+	context = {
+		'users': User.objects.all()
+	}
+	return render(request, 'message_app_admin/dashboard.html', context)

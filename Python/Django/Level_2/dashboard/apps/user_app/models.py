@@ -8,11 +8,11 @@ class UserManager(models.Manager):
 
 	def create_user(self, email, first_name, last_name, password, description):
 		user = self.create(email=email, first_name=first_name, last_name=last_name, password=password, description=description)
-		return (True, user)
+		return user
 
 	def hash_password(self, password):
 		pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-		return (True, pw_hash)
+		return pw_hash
 
 	def compare_passwords(self, user, password):
 		hashed = user.password.encode()
@@ -43,14 +43,18 @@ class UserManager(models.Manager):
 			return (True, user)
 
 	def login(self, data):
+		password = data['password']
 		errors = []
 		try:
 			user = self.get(email=data['email'])
-			self.compare_passwords(user, data['password'])
-			return (True, user)
+			if self.compare_passwords(user, password):
+				return (True, user)
+			else:
+				errors.append('Password does not match email in database.')
+				return (False, errors)
 		except:
 			errors.append('It appears as though this email does not yet exist in the database.')
-			return (False, errors)
+		return (False, errors)
 
 
 class User(models.Model):

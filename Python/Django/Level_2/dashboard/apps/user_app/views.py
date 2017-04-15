@@ -11,18 +11,18 @@ def loginpage(request):
 	return render(request, 'user_app_user/login.html')
 
 def login(request):
-	errors = []
 	valid, res = User.objects.login(request.POST)
 	if valid:
-		user = User.objects.get(email=request.POST['email'])
-		context = {
-			'user': request.session['user'],
-		}
-		return redirect(reverse('message_app:index'), context)
+		user = User.objects.get(email = request.POST['email'])
+		request.session['first_name'] = user.first_name
+		if int(user.id) == 1:
+			return redirect(reverse('message_app:indexadmin'), request.session['first_name'])
+		else:
+			return redirect(reverse('message_app:index'), request.session['first_name'])
 	else:
 		for error in res:
 			messages.error(request, error)
-		return redirect(reverse('message_app:index'))
+	return redirect(reverse('user_app:loginpage'))
 
 def registration(request):
 	return render(request, 'user_app_user/register.html')
@@ -35,7 +35,7 @@ def register(request):
 	else:
 		for error in res:
 			messages.error(request, error)
-		return redirect(reverse('user_app:index'))
+		return redirect(reverse('user_app:registration'))
 
 def logout(request):
 	request.session.clear()

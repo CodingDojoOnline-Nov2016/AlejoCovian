@@ -4,10 +4,13 @@
 </head>
 <body>
 	<p>Log In:</p>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
 	<form action = "{% url 'user_app:login' %}" method='post'>
 		{% csrf_token %}
-		<input type = 'email' name = 'Email' placeholder = 'email'>
-		<input type = 'password' name = 'Password' placeholder = 'password'>
+		<input type = 'email' name = 'email' placeholder = 'email'>
+		<input type = 'password' name = 'password' placeholder = 'password'>
 		<input type = 'submit' value = 'Log In'>
 	</form>
 

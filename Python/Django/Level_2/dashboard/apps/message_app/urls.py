@@ -4,4 +4,5 @@ app_name = 'message_app'
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
+	url(r'^indexadmin$', views.indexadmin, name='indexadmin'),
 ]

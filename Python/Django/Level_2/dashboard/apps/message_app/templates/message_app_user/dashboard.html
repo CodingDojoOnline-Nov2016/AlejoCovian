@@ -4,10 +4,10 @@
 </head>
 <body>
 	<a href="{% url 'user_app:logout' %}">logout</a>
-	<h3>Welcome to the DashBoard, {{user.first_name}}</h3>
+	<h3>Welcome to the DashBoard, {{request.session.first_name}}</h3>
 	<h4>All Users:</h4>
 	{% for user in users %}
-		{{user.first_name}} {{user.last_name}} ~ {{user.description}}
+		{{user.first_name}} {{user.last_name}} {{user.email}} ~ {{user.description}}
 		<br>
 	{% endfor %}
 </body>
