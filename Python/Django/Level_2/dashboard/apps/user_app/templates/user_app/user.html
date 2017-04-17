@@ -15,12 +15,43 @@
 	{% endif %}
 
 	<h4>Leave a message for {{user.first_name}}</h4>
-	<form>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+	{{request.session.first_name}}:
+	<form action = "{% url 'message_app:create' id=request.session.id %}" method='post'>
 		{% csrf_token %}
-		<textarea></textarea>
+		<textarea name = 'message'></textarea>
+		<input type = 'hidden' name = 'to_user' value = '{{user.id}}'>
 		<input type = 'submit'>
 	</form>
 
 	<h4>Messages:</h4>
+
+	{% for message in usermessages %}
+		{{message.user.first_name}} says:
+		<br>
+		{{message.message}}
+		<br>
+		COMMENTS:
+		<br>
+		{% for comment in message.comment.all %}
+			{{comment.user.first_name}}:
+			{{comment.comment}}
+			<br>
+		{% empty %}
+			<p>No comments yet!</p>
+		{% endfor %}
+	<br>
+	{{request.session.first_name}}:
+	<form action = "{% url 'message_app:comment' id=request.session.id %}" method='post'>
+		{% csrf_token %}
+		<input type = 'text' name = 'comment' placeholder='Post a comment'>
+		<input type = 'hidden' name = 'message' value = '{{message.id}}'>
+		<input type = 'submit' value='Comment'>
+	</form>
+	{% empty %}
+		<p>No messages yet</p>
+	{% endfor %}
 </body>
 </html>
