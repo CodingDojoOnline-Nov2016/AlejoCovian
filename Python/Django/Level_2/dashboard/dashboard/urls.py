@@ -17,5 +17,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('apps.user_app.urls', namespace='user_app')),
-    url(r'^message_app/', include('apps.message_app.urls', namespace='message_app'))
+    url(r'^message_app/', include('apps.message_app.urls', namespace='message_app')),
+    url(r'^admin_app/', include('apps.message_app.urls', namespace='admin_app')),
 ]
