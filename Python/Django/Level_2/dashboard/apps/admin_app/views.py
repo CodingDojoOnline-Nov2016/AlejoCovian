@@ -15,3 +15,7 @@ def create_user(request):
 		return redirect(request.META.get('HTTP_REFERER'))
 	else:
 		return redirect(reverse('user_app:dashboard'))
+
+def remove(request, id):
+	User.objects.get(id=id).delete()
+	return redirect(request.META.get('HTTP_REFERER'))

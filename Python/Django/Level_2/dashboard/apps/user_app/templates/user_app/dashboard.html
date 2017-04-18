@@ -20,6 +20,11 @@
 		{% if user.id == request.session.id or request.session.id == 1 %}
 			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
 		{% endif %}
+		{% if request.session.id == 1 %}
+			{% if user.id != request.session.id %}
+				<a href="{% url 'admin_app:remove' id=user.id %}">Remove</a>
+			{% endif %}
+		{% endif %}
 		<br>
 	{% endfor %}
 </body>
