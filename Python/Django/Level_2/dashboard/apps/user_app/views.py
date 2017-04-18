@@ -82,4 +82,3 @@ def userinfo(request, id):
 	return render(request, 'user_app/user.html', context)
 
 
-

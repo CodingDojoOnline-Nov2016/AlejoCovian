@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>New User</title>
+</head>
+<body>
+	<a href="{% url 'user_app:dashboard' %}">Home</a>
+	<a href="{% url 'user_app:logout' %}">Log Out</a>
+	<h3>Add a new user</h3>
+
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+	<form action = "{% url 'admin_app:create_user' %}" method="post">
+		{% csrf_token %}
+		<input type = "email" name="email" placeholder="Email Address"><br>
+		<input type = "text" name="first_name" placeholder="First Name"><br>
+		<input type = "text" name="last_name" placeholder="Last Name"><br>
+		<textarea name="description" placeholder=" User's Description"></textarea><br>
+		<input type = "password" name="password" placeholder="Password"><br>
+		<input type = "password" name="confirm_password" placeholder="Confirm Password"><br>
+		<input type = "submit" value = "Create">
+	</form>
+</body>
+</html>

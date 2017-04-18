@@ -3,12 +3,21 @@
 	<title>The DashBoard | DashBoard</title>
 </head>
 <body>
-	<h3>Welcome, {{request.session.first_name}}</h3>
+	<h3>Welcome, {{request.session.first_name}}
+		{% if request.session.id == 1 %}
+			(Admin)
+		{% endif %}
+	</h3>
 	<a href="{% url 'user_app:logout' %}">Log Out</a>
 	<h3>List of All Users:</h3>
+	{% if request.session.id == 1 %}
+		<a href="{% url 'admin_app:index' %}">Add New</a>
+	{% endif %}
+	<br>
+	<br>
 	{% for user in users %}
-		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ {{user.description}}
-		{% if user.id == request.session.id %}
+		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ {{user.description}} CREATED AT: {{user.created_at}}
+		{% if user.id == request.session.id or request.session.id == 1 %}
 			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
 		{% endif %}
 		<br>
