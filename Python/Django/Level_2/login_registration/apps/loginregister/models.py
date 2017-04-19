@@ -9,22 +9,21 @@ EMAILregex = re.compile(r'^[a-zA-Z0-9\.\+_-]+@[a-zA-Z0-9\._-]+\.[a-zA-Z]*$')
 # Create your models here.
 class UserValidate(models.Manager):
 	def validate(self, first_name, last_name, email, password, confirm_password):
+		errors = []
 		if len(first_name) <= 0:
-			return 2
+			errors.append('FIRST NAME CANNOT BE EMPTY')
 		if len(last_name) <= 0:
-			return 4
+			errors.append('LAST NAME CANNOT BE EMPTY')
 		if len(email) <= 0:
-			return 6
+			errors.append('EMAIL CANNOT BE EMPTY')
 		if len(password) <= 8:
-			return 8
+			errors.append('PASSWORD CANNOT BE EMPTY')
 		if password != confirm_password:
-			return 10
-		if first_name.isalpha() == False:
-			return False
-		if last_name.isalpha() == False:
-			return False
+			errors.append('PASSWORD AND PASSWORD CONFIRMATION MUST MATCH')
 		elif not EMAILregex.match(email):
-			return 12
+			errors.append('PLEASE INPUT A VALID PASSWORD')
+		if errors:
+			return (False, errors)
 		else:
 			pw = password.encode()
 			hashed = bcrypt.hashpw(pw, bcrypt.gensalt())

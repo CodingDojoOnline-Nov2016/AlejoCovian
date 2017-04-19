@@ -11,6 +11,8 @@
 	Reviews:
 	{% for review in reviews %}
 		{{review.book.title}}
+	{% empty %}
+		<p>N/A</p>
 		<br>
 	{% endfor %}
 	Total Reviews:

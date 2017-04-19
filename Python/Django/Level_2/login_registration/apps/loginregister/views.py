@@ -19,26 +19,7 @@ def register(request):
 		}
 		user = request.session['user']
 		return redirect('/success', user)
-	if result == 2:
-		messages.error(request, 'INPUT FIRST NAME OF MIN 2 CHARACTERS')
-		return redirect('/')
-	if result == 4:
-		messages.error(request, 'INPUT FIRST NAME OF MIN 2 CHARACTERS')
-		return redirect('/')
-	if result == 6:
-		messages.error(request, 'NO EMAIL')
-		return redirect('/')
-	if result == 8:
-		messages.error(request, 'PASSWORD MUST HAVE MIN 8 CHARACTERS')
-		return redirect('/')
-	if result == 10:
-		messages.error(request, 'PASSWORDS DO NOT MATCH')
-		return redirect('/')
-	if result == 12:
-		messages.error(request, "PLEASE INPUT A VALID EMAIL")
-		return redirect('/')
 	if result == False:
-		messages.error(request, "FIRST AND LAST NAMES CAN ONLY CONTAIN LETTERS")
 		return redirect('/')
 	else:
 		return redirect('/')

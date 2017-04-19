@@ -16,7 +16,7 @@
 	<br>
 	<br>
 	{% for user in users %}
-		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ {{user.description}} CREATED AT: {{user.created_at}}
+		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ CREATED AT: {{user.created_at}}
 		{% if user.id == request.session.id or request.session.id == 1 %}
 			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
 		{% endif %}
