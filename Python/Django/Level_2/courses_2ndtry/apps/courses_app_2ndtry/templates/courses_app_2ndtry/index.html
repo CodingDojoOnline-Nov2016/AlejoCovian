@@ -41,7 +41,7 @@
 			<div id = 'course'>
 				<p>{{course.name}}
 					<br>
-				{{course.description}}<a href="/show/{{course.id}}">REMOVE	</a></p>
+				{{course.description}}<a href="{% url 'courses:show' id=course.id %}">REMOVE	</a></p>
 			</div>
 		</div>
 		{% endfor %}
