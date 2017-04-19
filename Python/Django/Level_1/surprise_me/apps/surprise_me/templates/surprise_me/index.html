@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>Surprise Me!</title>
+</head>
+<body>
+	<h2>Surprise Me!</h2>
+	<form action = "{% url 'surprise_me:number' %}" method="post">
+		{% csrf_token %}
+		<input type = 'text' name = "number">
+		<br>
+		<input type = 'submit' value = 'Ready!'>
+	</form>
+</body>
+</html>
