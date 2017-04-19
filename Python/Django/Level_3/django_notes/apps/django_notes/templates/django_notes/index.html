@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Ajax Posts</title>
+</head>
+<body>
+	<h1>My Posts</h1>
+	{% for note in notes %}
+		{{note.note}}
+		<br>
+	{% endfor %}
+	<form action = "{% url 'django_notes:create' %}" method="post">
+		{% csrf_token %}
+		<textarea name = "note" placeholder = "Add a note"></textarea>
+		<br>
+		<input type = "submit" value = "Post It!">
+	</form>
+
+</body>
+</html>
