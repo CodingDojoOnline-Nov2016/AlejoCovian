@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title>User Interests</title>
+</head>
+<body>
+	<h1>User's Interests</h1>
+	{% for interest in interests %}
+		{{interest}}
+	{% endfor %}
+	<a href="{% url 'interests:users' %}">Back to Users</a><br>
+	<a href="{% url 'interests:index' %}">Enter another user interest</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>User Interests</title>
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	{% endif %}
+	<form action = "{% url 'interests:add' %}" method="post"> 
+		{% csrf_token %}
+		<input type = 'text' name = 'name' placeholder = 'Name'><br>
+		<input type = 'text' name = 'interest' placeholder = 'Interest'><br>
+		<input type = 'submit' value ='Submit'>
+	</form>
+	<a href="{% url 'interests:users' %}">Home</a>
+</body>
+</html>
