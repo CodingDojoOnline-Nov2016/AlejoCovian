@@ -4,9 +4,8 @@
 </head>
 <body>
 	<h1>User's Interests</h1>
-	{% for interest in interests %}
-		{{interest}}
-	{% endfor %}
+		{{user.name}}<br>
+		{{user.user_interests}}<br>
 	<a href="{% url 'interests:users' %}">Back to Users</a><br>
 	<a href="{% url 'interests:index' %}">Enter another user interest</a>
 </body>

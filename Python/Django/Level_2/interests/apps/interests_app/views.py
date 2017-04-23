@@ -19,7 +19,8 @@ def add(request):
 
 def users(request):
 	context = {
-		'users':User.objects.all()
+		'users':User.objects.all(),
+		'interests': Interest.objects.all()
 	}
 	return render(request, 'interests_app/users.html', context)
 
@@ -27,5 +28,5 @@ def show(request, id):
 	context = {
 		'user': User.objects.get(id=id)
 	}
-	return render(request, 'interests_app/show.html')
+	return render(request, 'interests_app/show.html', context)
 
