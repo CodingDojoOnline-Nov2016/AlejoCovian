@@ -9,6 +9,10 @@ class Interest(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
+	def __unicode__(self):
+		return self.interest
+
+####
 
 class UserManager(models.Manager):
 
@@ -30,36 +34,25 @@ class UserManager(models.Manager):
 		if errors:
 			return (False, errors)
 		else:
+			this_interest = Interest(interest=data['interest'])
+			this_interest.save()
 			try:
-				this_user = self.get(name=data['name'])
-				try:
-					this_interest = Interest.objects.get(interest=data['interest'], user=this_user)
-					errors.append('looks like this interest already exists in association with this user.')
-					return (False, errors)
-				except:
-					this_interest = Interest.objects.create(interest=data['interest'])
-					this_user.user_interests.add(this_interest)
-					this_user.save()
-				return (True, interest)
-
+				self.get(name=data['name'])
+				user = User.objects.get(name=data['name'])	
 			except:
-				try:
-					this_interest = Interest.objects.get(interest = data['interest'])
-					user = self.create_user(data['name'], this_interest)
-					user.user_interests.add(this_interest)
-					user.save()
-					return (True, user)
-				except:
-					this_interest = Interest.objects.create(interest = data['interest'])
-					user = self.create_user(data['name'])
-					user.user_interests.add(this_interest)
-					user.save()
-					return (True, user)
+				user = User(name=data['name'])
+				user.save()
+			user.user_interests.add(this_interest)
+			print user.user_interests.all()
+			return (True, user)
 
 class User(models.Model):
 	name = models.CharField(max_length=255)
-	user_interests = models.ManyToManyField(Interest, related_name="users")
+	user_interests = models.ManyToManyField(Interest, related_name="interests_of_users")
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	objects = UserManager()
+
+	def __unicode__(self):
+		return self.name
 
