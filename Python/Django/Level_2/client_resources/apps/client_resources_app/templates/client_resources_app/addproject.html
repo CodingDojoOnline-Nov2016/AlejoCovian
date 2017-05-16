@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+	<h1>Add Project for {{client.business_name}}</h1>
+	<form action = "{% url 'client_resources:create_project' %}" method='post'>
+		{% csrf_token %}
+		<input type = 'text' name='project' placeholder='Project Name'><br>
+		<textarea name='notes' placeholder='Notes'></textarea><br>
+		<input type = 'hidden' name='client_id' value='{{client.id}}'>
+		<input type = 'submit' value='Add Project'>
+	</form>
+
+	<a href="{% url 'client_resources:show' id=client.id %}">Cancel</a>
+</body>
+</html>

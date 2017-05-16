@@ -1,0 +1,7 @@
+pip install Django
+pip list
+pip install Django
+pip freeze
+pip uninstall Django
+pip show Django
+pip search Flask

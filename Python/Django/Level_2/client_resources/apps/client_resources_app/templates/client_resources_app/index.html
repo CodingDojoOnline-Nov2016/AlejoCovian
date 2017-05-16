@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	<h1>Clients</h1>
+	{% for client in clients %}
+		<a href="{% url 'client_resources:show' id=client.id %}">{{client.business_name}}</a>
+	{% endfor %}
+	<a href="{% url 'client_resources:add_client' %}">Add a Client</a>
+</body>
+</html>

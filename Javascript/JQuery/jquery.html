@@ -7,11 +7,18 @@
 		$(document).ready(function(){
 			$('#hihi').click(function(){
 				alert("hello");
-			})
+			});
+			$('.yo').click(function(){
+				alert("hello");
+			});
 		});
 	</script>
 </head>
 <body>
 	<div id="hihi">Click me.</div>
+	<div class = "yo">YUCK</div>
+
+	<input type = 'text' value = 'Macbook' id = 'computer'>
+	<p onclick = "$(this).slideUp();">Hide me.</p>
 </body>
 </html>

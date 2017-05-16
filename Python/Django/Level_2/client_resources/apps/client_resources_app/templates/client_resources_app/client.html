@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	<h1>Client {{client.business_name}}</h1>
+
+	<h3>Projects:</h3>
+		<a href="{% url 'client_resources:show_project' %}">project name</a>
+
+	<h3>Contact:</h3>
+		<p>{{client.email}}</p>
+		<p>{{client.phone}}</p>
+
+	<h3>Notes:</h3>
+		<p>{{client.notes}}</p>
+
+	<a href="{% url 'client_resources:add_project' id=client.id %}">Add Project</a>
+
+	<a href="{% url 'client_resources:index' %}">Back</a>
+</body>
+</html>

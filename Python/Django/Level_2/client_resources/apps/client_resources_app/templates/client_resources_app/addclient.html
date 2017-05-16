@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	<h1>Add Client</h1>
+	{% if messages %}
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+	{% endif %}
+	<form action = "{% url 'client_resources:create_client' %}" method="post">
+		{% csrf_token %}
+		<input type = 'text' name = 'business_name' placeholder='Business Name'><br>
+		<input type = 'text' name='email' placeholder='Email'><br>
+		<input type = 'text' name='phone' placeholder='Phone #'><br>
+		<textarea name='notes' placeholder='Notes'></textarea><br>
+		<input type = 'submit' value='Add'>
+	</form>
+	<a href="{% url 'client_resources:index' %}">Cancel</a>
+</body>
+</html>

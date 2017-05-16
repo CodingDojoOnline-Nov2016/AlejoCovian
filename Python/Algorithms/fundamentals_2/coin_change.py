@@ -7,10 +7,10 @@ def coinChange(num):
 	pennies = 0
 	while num >= 100:
 		num -= 100
-		halfdollars += 1
+		dollars += 1
 	while num >= 50:
 		num -= 50
-		halfdollar += 1
+		halfdollars += 1
 	while num >= 25:
 		num -= 25
 		quarters += 1

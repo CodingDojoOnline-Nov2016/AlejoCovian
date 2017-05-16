@@ -1,0 +1,18 @@
+<script type="text/javascript">
+
+	function fizzbuzz(length, fizzNumber, buzzNumber){
+		var output;
+		for(var i = 1; i <= length; i++){
+			output = '';
+			if(i % fizzNumber === 0){
+				output += 'Fizz';}
+			if(i % buzzNumber === 0){
+				output += 'Buzz';}
+			if(i % fizzNumber !== 0 && i%buzzNumber !== 0){
+				output += i;}
+			console.log(output);
+		}
+	}
+	fizzbuzz(100,3,5)
+
+</script>
