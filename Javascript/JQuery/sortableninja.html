@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Sortable Ninja</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable {margin: 0; padding: 0; width: 60%; }
+  #sortable li {padding: 0.4em; padding-left: 1.5em; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  } );
+  </script>
+</head>
+<body>
+ 
+<ul id="sortable">
+  <li><img src="file:///Users/alejandrocovian/Downloads/img/ninja1.png"></li>
+  <li><img src="file:///Users/alejandrocovian/Downloads/img/ninja4.png"></li>
+  <li><img src="file:///Users/alejandrocovian/Downloads/img/ninja0.png"></li>
+  <li><img src="file:///Users/alejandrocovian/Downloads/img/ninja3.png"></li>
+  <li><img src="file:///Users/alejandrocovian/Downloads/img/ninja2.png"></li>
+</ul>
+ 
+ 
+</body>
+</html>

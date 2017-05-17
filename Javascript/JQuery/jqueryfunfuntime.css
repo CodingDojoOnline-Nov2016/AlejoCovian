@@ -1,0 +1,44 @@
+*{
+	
+}
+
+#header{
+	width:700px;
+	margin:auto;
+
+}
+	#header h1{
+		width: 312px;
+		padding: 10px;
+		margin:auto;
+		background-color: crimson;
+	}
+
+
+.section{
+	margin:auto;
+	width: 700px;
+	background-color:crimson;
+	display: block;
+	border-bottom: solid;
+}
+
+	.section h2{
+		margin:10px;
+	}
+	.section p{
+		margin:10px;
+}
+
+button{
+	display: inline-block;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+footer{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width:700px;
+	margin:auto;
+}

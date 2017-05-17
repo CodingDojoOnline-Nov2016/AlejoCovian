@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html class="en">
+	<head>
+		<title>J Query Thing</title>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="jqueryfunfuntime.css">
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$('#shown').hide();
+
+				$('#add').click(function(){
+					$('.section p').addClass("par");
+				});
+
+				$( "#thiswilltoggle" ).click(function() {
+					$( "#slide" ).slideToggle( "slow" );
+				});
+
+				$('#thiswillappend').click(function(){
+					$("#right").append("<p>Here I am! Click the button APPEND to have me spawn again!</p>") 
+				});
+
+				$('#thiswillval').click(function(){
+					$('#span').val('The cake is a LIE.');
+				});
+
+				$('#thiswilltext').click(function(){
+					$('#textchanged').text('observe the power of JQuery');
+				});
+
+				$( "#thiswilljusttoggle" ).click(function() {
+  					$( ".toggled" ).toggle();
+				});
+
+				$('#fading').click(function(){
+					$('#secret_message').html('How many pickled peppers did Peter Piper pick?');
+					$('#secret_message').fadeIn(500);
+					$('#secret_message').delay(3000);
+					$('#secret_message').fadeOut(500);
+				});
+
+				$('#sliding').click(function(){
+					$('#anothermessage').text('My Dearest. Wandereth not amongst the flowers of high dawn, for they last not long til the mid-noon breaketh. If thou hast blood red enough to plant thyself on their burgeoning surfaces, thou canst not unplant thyself therefrom.')
+					$('#anothermessage').slideDown('slow');
+					$('#anothermessage').delay(7000);
+					$('#anothermessage').slideUp('slow');
+				});
+
+				$('#tohide').click(function(){
+					$('#hidden').hide();
+				});
+
+				$('#toshow').click(function(){
+					$('#shown').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<style>
+			.par{
+			color:white;
+			}
+		</style>
+		<div id="header">
+			<h1>JQuery Fun-Fun Time</h1>
+			<p>Let's get down with JQuery. JQuery is a valuable tool which allows the user to utilise large chunks of burdensome and complex Javascript in little packages. They're like little web-presents for making your web-pages shiny and nice!</p>
+		</div>
+		<div class="section">
+			<h2>AddClass</h2>
+			<p>Click the button to make these paragraphs turn white. Refresh to undo.</p>
+			<button id="add">AddClass</button>
+		</div>
+
+		<div class="section">
+			<div id="slideDiv">
+				<h2>Slide Toggle</h2>
+				<p>Click the button below to see what happens!</p>
+				<button id="thiswilltoggle">Toggle</button>
+				<p id="slide">
+				  This is going to <em>disappear</em> before your very <em>eyes!</em>
+				</p>
+			</div>
+
+		</div>
+
+		<div class="section">
+			<h2>Append</h2>
+			<p id="right">Click the button to append a new paragraph.</p>
+			<button id="thiswillappend">Append</button>
+		</div>
+
+		<div class="section">
+			<h2>Value Manipulation</h2>
+			<p>Just watch what happens when you click.</p>
+			<input type="text" id="span" value="Click button for cake.">
+			<br>
+			<button id="thiswillval">Change the Value</button>
+		</div>
+
+		<div class="section">
+			<h2>Text Change</h2>
+			<p>Press that "Text Change" button to change the sentence below ^_^</p>
+			<button id="thiswilltext">Text Change</button>
+			<p id="textchanged">We can do interesting things with computers, indeed! </p>
+		</div>
+
+		<div class="section">
+			
+			<h2>Toggle</h2>
+			<p>Unlike slide toggle, this toggle is just an ordinary joe sort of toggle.</p>
+				<button id="thiswilljusttoggle">Toggle</button>
+				<p class="toggled">
+				  This is going to be <em>replaced</em> before your very eyes!
+				</p>
+				<p class="toggled" style="display:none">This is replacement.</p>
+				<p>yea</p>
+				
+		</div>
+
+		<div class="section">
+			<h2>Fade In, Fade Out</h2>
+			<p>Below is the exposition of a special question just for you. But read it quickly! It'll be gone in a flash.</p>
+			<button id="fading">Button!</button>
+			<p id="secret_message"></p>
+		</div>
+
+		<div class="section">
+			<h2>Slide Uppa, Slide Downa</h2>
+			<p>More secret messages lie beneath, just waiting to be revealed.</p>
+			<button id="sliding">Press Me!</button>
+			<p id="anothermessage"></p>
+		</div>
+		<div class="section">
+			<h2>Show And Tell, Show And Hide</h2>
+			<p>Well, here we are! The last section. Click the button below to hide some words, and click the other to show <em>another</em> set of words..</p>
+			<button id="tohide">Hide</button>
+			<button id="toshow">Show</button>
+			<p id="hidden">Hey I'm going to hide!</p>
+			<p id="shown">Hullo! Peek-a-boo.</p>
+		</div>
+	</body>
+	<footer>How fun! Thank you for scrolling through this entertaining website. Or perhaps, only entertaining to me! Haha.</footer>
+</html>

@@ -9,12 +9,24 @@
 		var nickels = 0
 		var pennies = 0
 
-		while(num >= 100){ num -= 100; dollars += 1 }
-		while(num >=50){ num -= 50; halfdollars += 1 }
-		while(num >=25){ num -= 25; quarters += 1 }
-		while(num >= 10){ num -= 10; dimes += 1 }
-		while(num >=5){ num -= 5; nickels += 1 }
-		while(num >=1){ num -= 1; pennies += 1 }
+		while(num >= 100){ 
+			num -= 100; dollars += 1 
+		}
+		while(num >=50){ 
+			num -= 50; halfdollars += 1 
+		}
+		while(num >=25){ 
+			num -= 25; quarters += 1 
+		}
+		while(num >= 10){ 
+			num -= 10; dimes += 1 
+		}
+		while(num >=5){ 
+			num -= 5; nickels += 1 
+		}
+		while(num >=1){
+		 num -= 1; pennies += 1 
+		}
 
 		console.log(dollars, halfdollars, quarters, dimes, nickels, pennies)
 	}
