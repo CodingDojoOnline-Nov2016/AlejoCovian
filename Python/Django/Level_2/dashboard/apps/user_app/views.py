@@ -12,6 +12,8 @@ def index(request):
 		return render(request, 'user_app/welcome.html')
 
 def loginpage(request):
+	if 'first_name' in request.session:
+		return redirect(reverse('user_app:dashboard'))
 	return render(request, 'user_app/login.html')
 
 def login(request):
@@ -27,6 +29,8 @@ def login(request):
 	return redirect(reverse('user_app:loginpage'))
 
 def registration(request):
+	if 'first_name' in request.session:
+		return redirect(reverse('user_app:dashboard'))
 	return render(request, 'user_app/register.html')
 
 def register(request):
@@ -49,6 +53,8 @@ def logout(request):
 #####
 
 def dashboard(request):
+	if 'first_name' not in request.session:
+		return redirect(reverse('user_app:index'))
 	context = {
 		'users': User.objects.all()
 	}

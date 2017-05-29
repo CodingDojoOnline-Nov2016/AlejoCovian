@@ -1,17 +1,28 @@
 <html>
 <head>
-	<title>Home Page</title>
+	<title>DashBoard | Home Page</title>
+	{% load staticfiles %}<link rel="stylesheet" href="{% static 'user_app/welcome.css' %}"media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
-	<h2>Welcome</h2>
-	<p>This is an application built using an MVC framework (MTV framework in Django terms, of course).</p>
-	<h3><a href="{% url 'user_app:loginpage' %}">Start</a><h3>
+	<header>
+		<h1>D A S H B O A R D</h1>
+		<hr>
+	</header>
+
+	<div id = "welcomeblock">
+		<h2>Welcome</h2>
+		<p>This is an application built using an MVC framework (MTV framework in Django terms, of course).</p>
+		<h3><a href="{% url 'user_app:loginpage' %}">Start</a><h3>
+	</div>
+
 	<br>
-	<h4>Manage Users</h4>
-	<p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
-	<h4>Leave Messages</h4>
-	<p>Users will be able to leave a message to another user using this application.</p>
-	<h4>Edit User Information</h4>
-	<p>Admins will be able to edit another user's information (email address, first name, last name, etc).</p>
+	<div id = "manage">
+		<h4>✓ Admin Functionality</h4>
+		<p>This application allows admin to add, edit, and remove users.</p>
+		<h4>✓ Leave Messages</h4>
+		<p>Users will be able to leave messages to each other using this application.</p>
+		<h4>✓ Edit User Information</h4>
+		<p>Admins will be able to edit another user's information (email address, first name, last name, etc).</p>
+	</div>
 </body>
 </html>

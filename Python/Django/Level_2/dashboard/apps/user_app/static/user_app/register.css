@@ -1,0 +1,52 @@
+*{
+	font-family: helvetica;
+	font-weight: lighter;
+}
+h1{
+	font-family: "Courier New", Courier, monospace;
+	padding: 20px;
+}
+body{
+	background-color: lightgray;
+}
+
+
+a {
+	text-decoration: none;
+	color: #f44253;
+	font-weight: bold;
+}
+
+h3{
+	text-align: center;
+}
+input{
+	font-size: 20px;
+	margin: 10px;
+	margin-left: 90px;
+}
+textarea {
+	font-size: 20px;
+	margin: 10px;
+	margin-left: 93px;
+}
+
+#register{
+	background-color: white;
+	width: 380px;
+	padding: 20px;
+	margin-left: 400px;
+}
+
+#registerhere{
+	margin-left: 210px;
+	background-color: #f44253;
+	color: #f4fbff;
+	border-style: none;
+	padding: 10px;
+}
+
+p{
+	margin-top: 20px;
+	margin-left: 440px;
+}

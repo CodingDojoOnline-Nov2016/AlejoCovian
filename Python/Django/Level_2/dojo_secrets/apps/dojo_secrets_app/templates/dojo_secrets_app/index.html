@@ -21,6 +21,7 @@
 <div id = 'messagebox'>
 	{% for message in messages %}
 	<br>
+		{{message.user.first_name}} {{message.user.last_name}}
 		{{message.message}}
 		{{message.user.created_at}}
 		({{message.messagelikes.count}} likes)

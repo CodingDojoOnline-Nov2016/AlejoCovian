@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		function remove_duplicates(arr){
+			var location = 1
+			for (var i = 0; i<arr.length; i++){
+				if(arr[i] !== arr[i+1]){
+					arr[location] = arr[i+1]
+					location++;
+				}
+			}
+			arr.length=location - 1;
+			console.log(arr)
+		}
+		array = [1,2,3,3,4,4,5,5,6]
+		remove_duplicates(array)
+
+	</script>
+
+</body>
+</html>

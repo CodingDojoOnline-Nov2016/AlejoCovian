@@ -1,31 +1,67 @@
 <html>
 <head>
 	<title>The DashBoard | DashBoard</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'user_app/dashboard.css' %}" media="screen" title="no title"  charset="utf-8">
+
+	<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src = "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+ 	<script type="text/javascript">
+    	$(document).ready(function(){
+    		$('.grid').masonry({
+			itemSelector: '.grid-item',
+			columnWidth: 160,
+			horizontalOrder: true
+      });
+
+    })
+  </script>
+
 </head>
 <body>
-	<h3>Welcome, {{request.session.first_name}}
-		{% if request.session.id == 1 %}
-			(Admin)
-		{% endif %}
-	</h3>
-	<a href="{% url 'user_app:logout' %}">Log Out</a>
-	<h3>List of All Users:</h3>
-	{% if request.session.id == 1 %}
-		<a href="{% url 'admin_app:index' %}">Add New</a>
-	{% endif %}
-	<br>
-	<br>
-	{% for user in users %}
-		<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a> ~ CREATED AT: {{user.created_at}}
-		{% if user.id == request.session.id or request.session.id == 1 %}
-			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
-		{% endif %}
-		{% if request.session.id == 1 %}
-			{% if user.id != request.session.id %}
-				<a href="{% url 'admin_app:remove' id=user.id %}">Remove</a>
+	<h1>D A S H B O A R D</h1>
+	<hr>
+
+	<div id = "main">
+		<h3>Welcome, {{request.session.first_name}}
+			{% if request.session.id == 1 %}
+				(Admin)
 			{% endif %}
+		</h3>
+		<a href="{% url 'user_app:logout' %}" id = "logout">Log Out</a>
+		<h3>List of All Users:</h3>
+		<hr>
+		{% if request.session.id == 1 %}
+			<a href="{% url 'admin_app:index' %}">Add New</a>
 		{% endif %}
 		<br>
-	{% endfor %}
+		<br>
+
+			<div class = 'grid'>
+
+				{% for user in users %}
+					<div class = "grid-item">
+
+						<a href = "{% url 'user_app:userinfo' id=user.id %}">{{user.first_name}} {{user.last_name}}</a>
+						<br>
+						 <div id = "italic">Initiated on {{user.created_at}}</div>
+		
+						 <div id = "description">{{user.description}}</div>
+						 <br>
+						{% if user.id == request.session.id or request.session.id == 1 %}
+							<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
+						{% endif %}
+						{% if request.session.id == 1 %}
+							{% if user.id != request.session.id %}
+								<a href="{% url 'admin_app:remove' id=user.id %}">Remove</a>
+							{% endif %}
+						{% endif %}
+
+					</div>
+					
+				{% endfor %}
+			</div>
+
+	</div>
 </body>
 </html>

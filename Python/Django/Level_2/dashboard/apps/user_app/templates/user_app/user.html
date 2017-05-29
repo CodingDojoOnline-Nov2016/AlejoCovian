@@ -1,57 +1,71 @@
 <html>
 <head>
 	<title>User | DashBoard</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'user_app/user.css' %}" media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
-	<a href="{% url 'user_app:dashboard' %}">Home</a>
-	<a href="{% url 'user_app:logout' %}">Log Out</a>
-	<h3>{{user.first_name}} {{user.last_name}}</h3>
-	<p>Registered at: {{user.created_at}}</p>
-	<p>User ID: {{user.id}}</p>
-	<p>Email address: {{user.email}}</p>
-	<p>Description: {{user.description}}</p>
-	{% if user.id == request.session.id %}
-		<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
-	{% endif %}
 
-	<h4>Leave a message for {{user.first_name}}</h4>
-	{% for message in messages %}
-		{{message}}
-	{% endfor %}
-	{{request.session.first_name}}:
-	<form action = "{% url 'message_app:create' id=request.session.id %}" method='post'>
-		{% csrf_token %}
-		<textarea name = 'message'></textarea>
-		<input type = 'hidden' name = 'to_user' value = '{{user.id}}'>
-		<input type = 'submit'>
-	</form>
+		<h1>D A S H B O A R D</h1>
+		<hr>
+	<div id = "main">
+		
+		<a href="{% url 'user_app:dashboard' %}" id = "home">Home</a>
+		<a href="{% url 'user_app:logout' %}" id = "logout">Log Out</a>
 
-	<h4>Messages:</h4>
+		<h3>{{user.first_name}} {{user.last_name}}</h3>
+		<p>Registered at: {{user.created_at}}</p>
+		<p>User ID: {{user.id}}</p>
+		<p>Email address: {{user.email}}</p>
+		<p>Description: {{user.description}}</p>
+		{% if user.id == request.session.id %}
+			<a href="{% url 'user_app:edit' id=user.id %}">Edit</a>
+		{% endif %}
 
-	{% for message in usermessages %}
-		{{message.user.first_name}} says:
-		<br>
-		{{message.message}}
-		<br>
-		COMMENTS:
-		<br>
-		{% for comment in message.comment.all %}
-			{{comment.user.first_name}}:
-			{{comment.comment}}
-			<br>
-		{% empty %}
-			<p>No comments yet!</p>
+		{% if request.session.id == user.id %}
+		<h4>Leave a message for your friends.</h4>
+		{% else %}
+		<h4>Leave a message for {{user.first_name}}</h4>
+		{% endif %}
+		{% for message in messages %}
+			{{message}}
 		{% endfor %}
-	<br>
-	{{request.session.first_name}}:
-	<form action = "{% url 'message_app:comment' id=request.session.id %}" method='post'>
-		{% csrf_token %}
-		<input type = 'text' name = 'comment' placeholder='Post a comment'>
-		<input type = 'hidden' name = 'message' value = '{{message.id}}'>
-		<input type = 'submit' value='Comment'>
-	</form>
-	{% empty %}
-		<p>No messages yet</p>
-	{% endfor %}
+		{{request.session.first_name}}:
+		<form action = "{% url 'message_app:create' id=request.session.id %}" method='post'>
+			{% csrf_token %}
+			<textarea rows="5" cols="30" name = 'message'></textarea>
+			<input type = 'hidden' name = 'to_user' value = '{{user.id}}'>
+			<input id = "posting" type = 'submit'>
+		</form>
+
+		<h4>Messages:</h4>
+
+		{% for message in usermessages %}
+			{{message.user.first_name}} says:
+			<br>
+			{{message.message}}
+			<br>
+			COMMENTS:
+			<br>
+			{% for comment in message.comment.all %}
+				{{comment.user.first_name}}:
+				{{comment.comment}}
+				<br>
+			{% empty %}
+				<p>No comments yet!</p>
+			{% endfor %}
+		<br>
+		{{request.session.first_name}}:
+		<form action = "{% url 'message_app:comment' id=request.session.id %}" method='post'>
+			{% csrf_token %}
+			<input type = 'text' name = 'comment' placeholder='Post a comment'>
+			<input type = 'hidden' name = 'message' value = '{{message.id}}'>
+			<input class = 'posting' type = 'submit' value='Comment'>
+		</form>
+		{% empty %}
+			<p>No messages yet</p>
+		{% endfor %}
+
+	</div>
 </body>
 </html>

@@ -1,0 +1,81 @@
+*{
+	font-family: helvetica;
+}
+
+header{
+	display: inline-block;
+	padding: 20px;
+}
+
+	#name{
+		display: inline-block;
+		margin-left: 20px; 
+	}
+
+	#alejandro {
+		color: darkgrey;
+		font-size: 40px;
+	}
+
+	#covian {
+		color:blue;
+		font-size: 60px;
+	}
+
+	#contact {
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 430px;
+		margin-top: -80px;
+		font-size: 12px;
+	}
+
+		#number {
+			display: inline-block;
+			text-align: right;
+			padding-right: 10px;
+			border-right-style: solid; 
+		}
+
+		#othercontact{
+			display: inline-block;
+			text-align: left;
+			padding-left: 10px;
+			float: right;
+		}
+
+#left{
+	display: inline-block;
+	margin-left: 10px;
+	margin-top: 20px;
+	width: 200px;
+	padding: 10px;
+}
+	.summary{
+		font-size: 12px;
+	}
+	#skills{
+		font-size: 13px;
+	}
+
+
+
+h2{
+	color: blue;
+}
+h3{
+	font-weight: lighter;
+	color: gray;
+}
+
+
+#right{
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 20px;
+	vertical-align: top;
+	width: 450px;
+}
+	.project{
+		font-size: 12px;
+	}

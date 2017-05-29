@@ -1,18 +1,29 @@
 <html>
 <head>
-	<title>Log In | DashBoard</title>
+	<title>DashBoard | Log In</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'user_app/login.css' %}" media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
-	<p>Log In:</p>
-	{% for message in messages %}
-		{{message}}
-	{% endfor %}
-	<form action = "{% url 'user_app:login' %}" method='post'>
-		{% csrf_token %}
-		<input type = 'email' name = 'email' placeholder = 'email'>
-		<input type = 'password' name = 'password' placeholder = 'password'>
-		<input type = 'submit' value = 'Log In'>
-	</form>
+
+	<header>
+		<h1>D A S H B O A R D</h1>
+		<hr>
+	</header>
+
+	<div id = "login">
+
+		<h3>Log In:</h3>
+		{% for message in messages %}
+			{{message}}
+		{% endfor %}
+		<form action = "{% url 'user_app:login' %}" method='post'>
+			{% csrf_token %}
+			<input type = 'email' name = 'email' placeholder = 'email'><br>
+			<input type = 'password' name = 'password' placeholder = 'password'><br>
+			<input type = 'submit' value = 'Log In' id = 'loginhere'>
+		</form>
+	</div>
 
 	<p>Don't have an account? <a href="{% url 'user_app:registration' %}">Click here to register</a>.</p>
 

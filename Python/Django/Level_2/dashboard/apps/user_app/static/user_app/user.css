@@ -1,0 +1,43 @@
+*{
+	font-family: helvetica;
+	font-weight: lighter;
+}
+h1{
+	font-family: "Courier New", Courier, monospace;
+	padding: 20px;
+}
+body{
+	background-color: lightgray;
+}
+#main{
+	background-color: white;
+	padding: 20px;
+	margin: 20px;
+	width: 1185px;
+}
+
+a {
+	text-decoration: none;
+	color: #f44253;
+	font-weight: bold;
+}
+
+#logout{
+	display: inline-block;
+	margin-left: 1110px;
+	margin-top: -119px;
+}
+
+#home{
+	margin-left: 1000px;
+}
+textarea{
+	font-size: 20px;
+}
+#posting{
+	margin-left: 200px;
+	background-color: #f44253;
+	color: #f4fbff;
+	border-style: none;
+	padding: 10px;
+}

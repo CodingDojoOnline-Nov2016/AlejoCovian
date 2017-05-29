@@ -1,19 +1,28 @@
 <html>
 <head>
-	<title>Register | DashBoard</title>
+	<title>DashBoard | Register</title>
+	<header>
+		<h1>D A S H B O A R D</h1>
+		<hr>
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'user_app/register.css' %}" media="screen" title="no title"  charset="utf-8">
+	</header>
 </head>
 <body>
-	<p>REGISTER:</p>
-	<form action = "{% url 'user_app:register' %}" method='post'>
-		{% csrf_token %}
-		<input type = 'email' name = 'email' placeholder = 'Email Address'><br>
-		<input type = 'text' name = 'first_name' placeholder = 'First Name'><br>
-		<input type = 'text' name = 'last_name' placeholder = 'Last Name'><br>
-		<textarea name = 'description' placeholder="Describe yourself"></textarea><br>
-		<input type = 'password' name = 'password' placeholder = 'Password'><br>
-		<input type = 'password' name = 'confirm_password' placeholder = 'Confirm Password'><br>
-		<input type = 'submit' value = 'Register'>
-	</form>
+	<div id = "register">
+	<h3>REGISTER:</h3>
+		<form action = "{% url 'user_app:register' %}" method='post'>
+			{% csrf_token %}
+			<input type = 'email' name = 'email' placeholder = 'Email Address'><br>
+			<input type = 'text' name = 'first_name' placeholder = 'First Name'><br>
+			<input type = 'text' name = 'last_name' placeholder = 'Last Name'><br>
+			<textarea rows="4" cols="19.5" name = 'description' placeholder="Describe yourself"></textarea><br>
+			<input type = 'password' name = 'password' placeholder = 'Password'><br>
+			<input type = 'password' name = 'confirm_password' placeholder = 'Confirm Password'><br>
+			<input id = "registerhere" type = 'submit' value = 'Register'>
+		</form>
+
+	</div>
 
 	<p>Already have an account? <a href="{% url 'user_app:loginpage' %}">Click Here to Login</a>. </p>
 </body>
