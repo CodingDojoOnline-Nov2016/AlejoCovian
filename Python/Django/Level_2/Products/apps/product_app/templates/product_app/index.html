@@ -1,6 +1,11 @@
 <html>
 <head>
+	{% load staticfiles %}
+
 	<title>PRODUCT | All Products</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 	<style type="text/css">
 		h1{
 			margin-left: 20px;
@@ -34,8 +39,24 @@
 	</style>
 </head>
 <body>
+	<h2>Create Product</h2>
+	<form action = "{% url 'products:create_product' %}" method = 'POST' id = "post-form">
+		{% csrf_token %}
+		Name:<input type = 'text' name = 'name'>
+		<br>
+		Description:<input id='description' type = 'text' name = 'description'>
+		<br>
+		Price:<input type = 'text' name = 'price'>
+		<br>
+		<div id = "results"></div>
+		<br>
+		<input type = 'submit' value = 'CREATE'>
+	</form>
+	<a href="{% url 'products:index' %}">Home</a>
 	<h1>Products</h1>
 	<p>list of products</p>
+
+	<div id = 'talk'>
 
 	{% for product in products %}
 
@@ -50,8 +71,10 @@
 		</div>
 
 	{% endfor %}
-	
+
+	</div>
 	<br>
-	<a href="{% url 'products:new' %}" id = 'addproduct'>Add a New Product</a>
+	<script src = "{% static 'scripts/main.js' %}"></script>
+	
 </body>
 </html>

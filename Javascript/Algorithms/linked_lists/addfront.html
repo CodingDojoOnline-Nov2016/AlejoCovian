@@ -1,0 +1,15 @@
+<script type="text/javascript">
+
+	function addFront(data){
+		var n = new Node(data)
+		if(this.isEmpty()){
+			this.head = n;
+		}
+		else{
+			n.next = this.head;
+			this.head = n;
+		}
+		return this;
+	}
+
+</script>

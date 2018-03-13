@@ -1,0 +1,15 @@
+<script type="text/javascript">
+
+	function removethese(arr, x){
+		var newarr = []
+		for (var i = arr.length - x; i < arr.length; i++){
+			newarr.push(arr[i])
+		}
+		arr = newarr
+		console.log(arr);
+		return arr
+	}
+
+	removethese([2,4,6,8,10], 4)
+
+</script>

@@ -1,0 +1,38 @@
+<script type="text/javascript">
+
+	function LinkedList() {
+		this.head = null;
+	};
+
+	LinkedList.prototype.isEmpty = function() {
+		return this.head === null;
+	};
+
+	LinkedList.prototype.size = function() {
+		var current = this.head;
+		var count = 0;
+
+		while (current !== null) {
+			count ++;
+			current = current.next;
+		};
+
+		return count;
+	};
+
+	LinkedList.prototype.prepend = function(val) {
+		var newNode = {
+			data: val,
+			next: this.head
+		};
+
+		this.head = newNode;
+	};
+
+	var list = new LinkedList();
+	list.prepend(10);
+	list.prepend(5);
+
+	console.log(list.size());
+
+</script>

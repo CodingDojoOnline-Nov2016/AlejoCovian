@@ -1,0 +1,43 @@
+*{
+	font-family: helvetica;
+}
+
+header{
+	display: inline-block;
+	padding: 20px;
+}
+
+	#name{
+		display: inline-block;
+		margin-left: 20px;
+	}
+
+	#alejandro {
+		color: darkgrey;
+		font-size: 40px;
+    /*!_!_!_!_!_!_!_!_!_!_!*/
+    margin-top: -20px;
+	}
+
+	#covian {
+		color:blue;
+		font-size: 60px;
+	}
+
+	#contact {
+		display: inline-block;
+		vertical-align: top;
+		margin-left: 380px;
+		margin-top: -80px;
+		font-size: 12px;
+	}
+
+		#number {
+			display: inline-block;
+			text-align: right;
+			padding-right: 10px;
+		}
+
+p{
+  font-size: 13px;
+}

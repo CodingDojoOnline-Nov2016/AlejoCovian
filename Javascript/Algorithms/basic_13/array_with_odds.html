@@ -1,7 +1,23 @@
 <script type="text/javascript">
 	for(var i = 0; i<=255; i++){
 		if(i % 2 != 0){
-			console.log(i)
+			//console.log(i)
 		}
 	}
+</script>
+
+<script type="text/javascript">
+	function takeWhile(callback, array){
+  		var newarr = [];
+  		for(var i = 0; i < array.length; i++){
+			if(callback(array[i])==true){
+     		newarr.push(callback(array[i]))
+    		}
+ 		}
+  		console.log(newarr);
+	} 
+	var isEven = function(elem){
+		return elem % 2 === 0;
+	} 
+	takeWhile(isEven, [2,4,5,6,8]);
 </script>
