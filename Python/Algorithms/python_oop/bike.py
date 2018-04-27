@@ -5,21 +5,22 @@ class Bike(object):
         self.miles = 0
 
     def displayinfo(self):
-        print("Price: ", price, "Maximum speed: ", max_speed, "Total miles: ", miles)
+        print ("Price is: $" + str(self.price))
+        print ("Max speed: " + str(self.max_speed) + "mph")
+        print ("Total miles: " + str(self.miles)+ "miles")
 
-    def ride(self):
-        miles += 10
-        print("Riding")
+    def drive(self):
+        print ("Driving")
+        self.miles += 10
 
-    def reverse():
+    def reverse(self):
+        print ("Reversing")
         if self.miles >= 5:
-            miles -= 5
-        print("Reversing")
-
+            self.miles -= 5
 
 bike1 = Bike(99.99, 12)
 bike1.drive()
 bike1.drive()
 bike1.drive()
 bike1.reverse()
-bike1.displayInfo()
+bike1.displayinfo()
